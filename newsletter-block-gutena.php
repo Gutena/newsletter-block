@@ -81,6 +81,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			wp_localize_script( 'gutena-newsletter-block', 'gutenaNewsletterBlock', [
 				'ajax_url'      => admin_url( 'admin-ajax.php' ),
 				'nonce'         => wp_create_nonce( 'gutena_newsletter' ),
+				'in_process'    => __( 'Processing...', 'newsletter-block-gutena' ),
 				'email_invalid' => __( 'Email is not valid!', 'newsletter-block-gutena' ),
 			] );
 		}

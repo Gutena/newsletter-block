@@ -20,7 +20,7 @@ for ( let i = 0; i < nodeList.length; i++ ) {
         }
 
         parentNode.after( 
-            Object.assign( document.createElement( 'div' ), { innerHTML: '<span class="loader"></span>'+ 'Processing...', className: 'gutena-newsletter-message success' } )
+            Object.assign( document.createElement( 'div' ), { innerHTML: '<span class="loader"></span>' + gutenaNewsletterBlock.in_process, className: 'gutena-newsletter-message success' } )
         )
         
         const data = new FormData();
