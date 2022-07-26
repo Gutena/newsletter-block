@@ -1,0 +1,7 @@
+node_modules/
+.editorconfig
+.npm
+.eslintcache
+.env
+*-lock.json
+phpcs.xml
