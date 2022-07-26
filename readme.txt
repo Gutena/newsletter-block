@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 ### Newsletter Block by Gutena
 
-#### What does this plugin do?
+Easily and instantly add Newsletter Block to yout Gutenberg Editor.
 
 #### Compatibility
 
@@ -35,17 +35,9 @@ If you like this plugin, consider exploring our other plugins:
 == Installation ==
 
 1. Visit 'Plugins > Add New'.
-1. Search for 'Projectopia' and install it.
-1. Or you can upload the `projectopia-core` folder to the `/wp-content/plugins/` directory manually.
-1. Activate Projectopia from your Plugins page.
-1. After activation go to 'Sidebar > Projectopia'.
-1. Enable options and save changes.
-
-== Frequently Asked Questions ==
-
-= Is there any admin interface for this plugin? =
-
-Yes. You can access this from 'Sidebar > Projectopia'.
+1. Search for 'Newsletter Block by Gutena' and install it.
+1. Or you can upload the `newsletter-block-gutena` folder to the `/wp-content/plugins/` directory manually.
+1. Activate Newsletter Block by Gutena from your Plugins page.
 
 == Screenshots ==
 
@@ -54,6 +46,6 @@ Yes. You can access this from 'Sidebar > Projectopia'.
 == Changelog ==
 
 = 1.0.0 =
-Release Date: July 22, 2022
+Release Date: July 26, 2022
 
-* Inital Release on WordPress.org.
+* Initial Release on WordPress.org.
