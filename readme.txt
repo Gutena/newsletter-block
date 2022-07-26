@@ -45,6 +45,12 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 == Changelog ==
 
+= 1.0.1 =
+Release Date:
+
+* Added: Inherit Layout option.
+* Fixed: Styles was not applying on first save.
+
 = 1.0.0 =
 Release Date: July 26, 2022
 

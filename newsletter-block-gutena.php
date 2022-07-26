@@ -91,9 +91,13 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 */
 		public function render_block( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
-			unset( $attributes['style'] );
-
+			if ( strpos( $wrapper_attributes, 'style' ) === false ) {
+				$wrapper_attributes = 'style="border-radius: 6px; color: #000000; background-color: #EBEBEB; padding-top: 12px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; margin-top: 10px; margin-bottom: 10px; margin-left: 0; margin-right: 0; font-size: 18px;" class="gutena-newsletter-field-block has-text-color has-background wp-block-gutena-newsletter-field"';
+			}
+			
 			$icon_color = ! empty( $attributes['iconColor'] ) ? $attributes['iconColor'] : 'inherit';
+
+			unset( $attributes['style'] );
 			unset( $attributes['iconColor'] );
 
 			$output = '<form class="gutena-newsletter-form">';
