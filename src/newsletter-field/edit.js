@@ -6,6 +6,10 @@ export default function edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( {
         className: 'gutena-newsletter-field-block',
     } );
+
+    const helpText = (
+        <a href="https://mailchimp.com/help/find-audience-id/" target="_blank">{ __( 'Find Audience ID', 'gutena-newsletter' ) }</a>
+    )
 	
 	return (
 		<>
@@ -24,14 +28,15 @@ export default function edit( { attributes, setAttributes } ) {
                         ( attributes.provider === 'mailchimp' ) ? 
                         <>
                             <TextControl
-                                label={ __( 'Mailchimp Api Key', 'gutena-newsletter' ) }
+                                label={ __( 'Mailchimp API Key', 'gutena-newsletter' ) }
                                 value={ attributes.mailchimpApiKey }
                                 onChange={ ( value ) => setAttributes( { mailchimpApiKey: value } ) }
                             />
                             <TextControl
-                                label={ __( 'Mailchimp List ID', 'gutena-newsletter' ) }
+                                label={ __( 'Mailchimp Audience ID', 'gutena-newsletter' ) }
                                 value={ attributes.mailchimpListID }
                                 onChange={ ( value ) => setAttributes( { mailchimpListID: value } ) }
+                                help={ helpText} 
                             />
                         </>
                         : <></>

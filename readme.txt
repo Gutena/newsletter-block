@@ -3,7 +3,7 @@ Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp
 Requires at least: 5.8
 Tested up to: 6.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -46,9 +46,11 @@ If you like this plugin, consider exploring our other themes and plugins:
 == Changelog ==
 
 = 1.0.1 =
-Release Date:
+Release Date: July 27, 2022
 
 * Added: Inherit Layout option.
+* Added: Block Align option.
+* Added: Help for Audience ID field.
 * Fixed: Styles was not applying on first save.
 
 = 1.0.0 =

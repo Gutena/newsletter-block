@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Newsletter Block by Gutena
  * Description:     Newsletter Block by Gutena
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          ExpressTech
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.0.0';
+		public $version = '1.0.1';
 
 		/**
 		 * Instance of this class.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 */
 		public function render_block( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
-			if ( strpos( $wrapper_attributes, 'style' ) === false ) {
+			if ( strpos( $wrapper_attributes, 'style"' ) === false ) {
 				$wrapper_attributes = 'style="border-radius: 6px; color: #000000; background-color: #EBEBEB; padding-top: 12px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; margin-top: 10px; margin-bottom: 10px; margin-left: 0; margin-right: 0; font-size: 18px;" class="gutena-newsletter-field-block has-text-color has-background wp-block-gutena-newsletter-field"';
 			}
 			
