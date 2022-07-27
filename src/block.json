@@ -8,6 +8,8 @@
 	"description": "Newsletter Block by Gutena",
 	"textdomain": "newsletter-block-gutena",
 	"supports": {
+		"__experimentalLayout": true,
+        "align": [ "wide", "full" ],
 		"html": false
 	},
 	"editorScript": "file:./index.js",
