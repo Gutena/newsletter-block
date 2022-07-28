@@ -24,6 +24,8 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 🧱 [Gutena](https://wordpress.org/themes/gutena/) - A full site editing (block) theme for WordPress with ready made full page templates. Elegant and functional - follows all the best practices by WP, and yeah, no jQuery!
 
+⏱️[Quiz and Survey Master](https://wordpress.org/plugins/quiz-master-next/) - Best WordPress Quiz Plugin to create engaging quizzes, surveys, & exams using WordPress and convert your website into a lead generation machine.
+
 ☰ [Responsive Menu](https://wordpress.org/plugins/responsive-menu/) - Best WordPress Menu Builder Plugin to create awesome and interactive mobile & desktop menus for WordPress websites.
 
 📙 [Projectopia](https://wordpress.org/plugins/projectopia-core/) - Project Management & Invoicing plugin for WordPress. Generate invoices, send quotes, generate leads, manage clients, provide support - all inside your WordPress website.
