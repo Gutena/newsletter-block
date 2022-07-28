@@ -8,19 +8,19 @@ export default function edit( { attributes, setAttributes } ) {
     } );
 
     const helpText = (
-        <a href="https://mailchimp.com/help/find-audience-id/" target="_blank">{ __( 'Find Audience ID', 'gutena-newsletter' ) }</a>
+        <a href="https://mailchimp.com/help/find-audience-id/" target="_blank">{ __( 'Find Audience ID', 'newsletter-block-gutena' ) }</a>
     )
 	
 	return (
 		<>
 			<InspectorControls key="settings">
-                <PanelBody title={ __( 'Provider', 'gutena-newsletter' ) }>
+                <PanelBody title={ __( 'Provider', 'newsletter-block-gutena' ) }>
                     <SelectControl
-                        label={ __( 'Choose Provider', 'gutena-newsletter' ) }
+                        label={ __( 'Choose Provider', 'newsletter-block-gutena' ) }
                         value={ attributes.provider }
                         options={ [
-                            { label: __( '-- Select --', 'gutena-newsletter' ), value: '' },
-                            { label: __( 'Mailchimp', 'gutena-newsletter' ), value: 'mailchimp' },
+                            { label: __( '-- Select --', 'newsletter-block-gutena' ), value: '' },
+                            { label: __( 'Mailchimp', 'newsletter-block-gutena' ), value: 'mailchimp' },
                         ] }
                         onChange={ ( value ) => setAttributes( { provider: value } ) }
                     />
@@ -28,12 +28,12 @@ export default function edit( { attributes, setAttributes } ) {
                         ( attributes.provider === 'mailchimp' ) ? 
                         <>
                             <TextControl
-                                label={ __( 'Mailchimp API Key', 'gutena-newsletter' ) }
+                                label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
                                 value={ attributes.mailchimpApiKey }
                                 onChange={ ( value ) => setAttributes( { mailchimpApiKey: value } ) }
                             />
                             <TextControl
-                                label={ __( 'Mailchimp Audience ID', 'gutena-newsletter' ) }
+                                label={ __( 'Mailchimp Audience ID', 'newsletter-block-gutena' ) }
                                 value={ attributes.mailchimpListID }
                                 onChange={ ( value ) => setAttributes( { mailchimpListID: value } ) }
                                 help={ helpText} 
@@ -42,14 +42,14 @@ export default function edit( { attributes, setAttributes } ) {
                         : <></>
                     }
                 </PanelBody>
-                <PanelBody title={ __( 'Messages', 'gutena-newsletter' ) } initialOpen={ false }>
+                <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ false }>
                     <TextControl
-                        label={ __( 'Success Message', 'gutena-newsletter' ) }
+                        label={ __( 'Success Message', 'newsletter-block-gutena' ) }
                         value={ attributes.textSuccess }
                         onChange={ ( value ) => setAttributes( { textSuccess: value } ) }
                     />
                     <TextControl
-                        label={ __( 'Already Subscribed Message', 'gutena-newsletter' ) }
+                        label={ __( 'Already Subscribed Message', 'newsletter-block-gutena' ) }
                         value={ attributes.textSubscribed }
                         onChange={ ( value ) => setAttributes( { textSubscribed: value } ) }
                     />
@@ -60,7 +60,7 @@ export default function edit( { attributes, setAttributes } ) {
                         {
                             value: attributes.iconColor,
                             onChange: ( value ) => setAttributes( { iconColor: value } ),
-                            label: __( 'Color', 'gutena-newsletter' ),
+                            label: __( 'Color', 'newsletter-block-gutena' ),
                         }
                     ] }
                 />
