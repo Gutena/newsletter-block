@@ -20,6 +20,12 @@ Easily and instantly add Newsletter Block to your Gutenberg Editor.
 
 * This plugin is fully compatible with WordPress Version 5.8 and beyond and also compatible with any WordPress theme.
 
+## 🌐 Our Blocks
+
+If you like this plugin, consider exploring our other block plugins:
+
+🧱 [Post Featured Tag Block by Gutena](https://wordpress.org/plugins/post-featured-tag-block-by-gutena/) - Post Featured Tag Block use to add custom featured or new tag on post based on post date.
+
 ## 🌐 Our Products
 
 If you like this plugin, consider exploring our other themes and plugins:
