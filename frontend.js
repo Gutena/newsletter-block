@@ -8,8 +8,10 @@ for ( let i = 0; i < nodeList.length; i++ ) {
         let emailAddress = nodeList[i].querySelector( '#gutena-newsletter-field' ).value;
         let settingsData = nodeList[i].querySelector( '#gutena-newsletter-settings' ).value;
 
-        if ( nextNode.classList.contains( 'gutena-newsletter-message' ) ) {
-            nextNode.remove();
+        if ( nextNode && nextNode !== 'undefined' ) {
+            if ( nextNode.classList.contains( 'gutena-newsletter-message' ) ) {
+                nextNode.remove();
+            }
         }
 
         if ( ! validateEmail( emailAddress ) ) {
