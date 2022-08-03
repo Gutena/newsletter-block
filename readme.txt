@@ -1,6 +1,6 @@
 === Newsletter Block by Gutena ===
 Contributors: expresstech, infosatech
-Tags: newsletter, mailchimp
+Tags: newsletter, mailchimp, block, newsletter block
 Requires at least: 5.8
 Tested up to: 6.0
 Stable tag: 1.0.1
@@ -23,6 +23,8 @@ Easily and instantly add Newsletter Block to your Gutenberg Editor.
 ## 🌐 Our Blocks
 
 If you like this plugin, consider exploring our other block plugins:
+
+🧱 [PhotoFeed Block by Gutena](https://wordpress.org/plugins/photofeed-block-by-gutena/) - Display Instagram Photos from your Instagram accounts, either in the same single feed or in multiple different ones.
 
 🧱 [Post Featured Tag Block by Gutena](https://wordpress.org/plugins/post-featured-tag-block-by-gutena/) - Post Featured Tag Block use to add custom featured or new tag on post based on post date.
 
@@ -48,10 +50,6 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Search for 'Newsletter Block by Gutena' and install it.
 1. Or you can upload the `newsletter-block-gutena` folder to the `/wp-content/plugins/` directory manually.
 1. Activate Newsletter Block by Gutena from your Plugins page.
-
-== Screenshots ==
-
-1. Block Settings
 
 == Changelog ==
 
