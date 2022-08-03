@@ -1,9 +1,9 @@
 === Newsletter Block by Gutena ===
 Contributors: expresstech, infosatech
-Tags: newsletter, mailchimp
+Tags: newsletter, mailchimp, block, newsletter block
 Requires at least: 5.8
 Tested up to: 6.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -24,6 +24,8 @@ Easily and instantly add Newsletter Block to your Gutenberg Editor.
 
 If you like this plugin, consider exploring our other block plugins:
 
+🧱 [PhotoFeed Block by Gutena](https://wordpress.org/plugins/photofeed-block-by-gutena/) - Display Instagram Photos from your Instagram accounts, either in the same single feed or in multiple different ones.
+
 🧱 [Post Featured Tag Block by Gutena](https://wordpress.org/plugins/post-featured-tag-block-by-gutena/) - Post Featured Tag Block use to add custom featured or new tag on post based on post date.
 
 ## 🌐 Our Products
@@ -31,6 +33,8 @@ If you like this plugin, consider exploring our other block plugins:
 If you like this plugin, consider exploring our other themes and plugins:
 
 🧱 [Gutena](https://wordpress.org/themes/gutena/) - A full site editing (block) theme for WordPress with ready made full page templates. Elegant and functional - follows all the best practices by WP, and yeah, no jQuery!
+
+⏱️[Quiz and Survey Master](https://wordpress.org/plugins/quiz-master-next/) - Best WordPress Quiz Plugin to create engaging quizzes, surveys, & exams using WordPress and convert your website into a lead generation machine.
 
 ☰ [Responsive Menu](https://wordpress.org/plugins/responsive-menu/) - Best WordPress Menu Builder Plugin to create awesome and interactive mobile & desktop menus for WordPress websites.
 
@@ -47,11 +51,13 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Or you can upload the `newsletter-block-gutena` folder to the `/wp-content/plugins/` directory manually.
 1. Activate Newsletter Block by Gutena from your Plugins page.
 
-== Screenshots ==
-
-1. Block Settings
-
 == Changelog ==
+
+= 1.0.2 =
+Release Date: August 3, 2022
+
+* Fixed: Javascript error.
+* Fixed: Wrong textdoamin.
 
 = 1.0.1 =
 Release Date: July 27, 2022
