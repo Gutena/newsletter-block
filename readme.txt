@@ -14,15 +14,25 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 Easily and instantly add Newsletter Block to your Gutenberg Editor.
 
+[youtube https://www.youtube.com/watch?v=Idy5H0TziBA]
+
 #### Compatibility
 
 * This plugin is fully compatible with WordPress Version 5.8 and beyond and also compatible with any WordPress theme.
+
+## 🌐 Our Blocks
+
+If you like this plugin, consider exploring our other block plugins:
+
+🧱 [Post Featured Tag Block by Gutena](https://wordpress.org/plugins/post-featured-tag-block-by-gutena/) - Post Featured Tag Block use to add custom featured or new tag on post based on post date.
 
 ## 🌐 Our Products
 
 If you like this plugin, consider exploring our other themes and plugins:
 
 🧱 [Gutena](https://wordpress.org/themes/gutena/) - A full site editing (block) theme for WordPress with ready made full page templates. Elegant and functional - follows all the best practices by WP, and yeah, no jQuery!
+
+⏱️[Quiz and Survey Master](https://wordpress.org/plugins/quiz-master-next/) - Best WordPress Quiz Plugin to create engaging quizzes, surveys, & exams using WordPress and convert your website into a lead generation machine.
 
 ☰ [Responsive Menu](https://wordpress.org/plugins/responsive-menu/) - Best WordPress Menu Builder Plugin to create awesome and interactive mobile & desktop menus for WordPress websites.
 
