@@ -57,7 +57,7 @@ If you like this plugin, consider exploring our other themes and plugins:
 Release Date: August 3, 2022
 
 * Fixed: Javascript error.
-* Fixed: Wrong textdoamin.
+* Fixed: Wrong textdomain.
 
 = 1.0.1 =
 Release Date: July 27, 2022
