@@ -77,8 +77,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			] );
 
 			// Enqueue assets.
-			wp_register_script( 'gutena-newsletter-block', plugins_url( 'frontend.min.js', __FILE__ ), [], $this->version, true );
-			wp_localize_script( 'gutena-newsletter-block', 'gutenaNewsletterBlock', [
+			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlock', [
 				'ajax_url'      => admin_url( 'admin-ajax.php' ),
 				'nonce'         => wp_create_nonce( 'gutena_newsletter' ),
 				'in_process'    => __( 'Processing...', 'newsletter-block-gutena' ),
