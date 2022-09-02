@@ -8,7 +8,6 @@
 .distignore
 .editorconfig
 .gitignore
-frontend.js
 gulpfile.js
 package.json
 package-lock.json

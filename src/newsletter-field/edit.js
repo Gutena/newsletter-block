@@ -25,7 +25,7 @@ export default function edit( { attributes, setAttributes } ) {
                         onChange={ ( value ) => setAttributes( { provider: value } ) }
                     />
                     {
-                        ( attributes.provider === 'mailchimp' ) ? 
+                        ( attributes.provider === 'mailchimp' ) &&
                         <>
                             <TextControl
                                 label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
@@ -39,7 +39,6 @@ export default function edit( { attributes, setAttributes } ) {
                                 help={ helpText} 
                             />
                         </>
-                        : <></>
                     }
                 </PanelBody>
                 <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ false }>

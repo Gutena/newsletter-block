@@ -53,6 +53,11 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 == Changelog ==
 
+= 1.0.3 =
+Release Date:
+
+* Added: Frontend JS file in build process.
+
 = 1.0.2 =
 Release Date: August 3, 2022
 
