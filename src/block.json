@@ -4,8 +4,7 @@
 	"name": "gutena/newsletter",
 	"title": "Newsletter",
 	"category": "gutena",
-	"icon": "email",
-	"description": "Newsletter Block by Gutena",
+	"description": "Gutena Newsletter",
 	"textdomain": "newsletter-block-gutena",
 	"supports": {
 		"__experimentalLayout": true,

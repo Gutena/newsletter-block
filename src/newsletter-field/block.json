@@ -5,7 +5,6 @@
     "title": "Newsletter Field",
     "category": "gutena",
     "parent": [ "gutena/newsletter" ],
-    "icon": "email-alt",
     "description": "Gutena Newsletter Field",
     "textdomain": "newsletter-block-gutena",
     "supports": {
