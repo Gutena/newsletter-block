@@ -68,7 +68,7 @@ export default function edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
                 <form className="gutena-newsletter-form">
                     <input type="email" id="gutena-newsletter-field" className="gutena-newsletter-field" placeholder="name@email.com" />
-                    <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={{ color: attributes.iconColor }} />
+                    <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={ { color: attributes?.iconColor } } />
                 </form>
 			</div>
 		</>
