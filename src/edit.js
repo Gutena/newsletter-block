@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import placeholderImage from './image.png';
 
@@ -22,11 +22,9 @@ export default function edit() {
         className: 'gutena-newsletter-block',
     } );
 
-	return (
-		<div { ...blockProps }>
-			<InnerBlocks
-				template={ BLOCK_TEMPLATE }
-			/>
-		</div>
-	);
+    const innerBlocksProps = useInnerBlocksProps( blockProps, {
+        template: BLOCK_TEMPLATE,
+    } );
+
+	return <div { ...innerBlocksProps } />;
 }

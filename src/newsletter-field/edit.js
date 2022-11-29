@@ -1,10 +1,46 @@
+/**
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
-import { InspectorControls, PanelColorSettings, useBlockProps } from '@wordpress/block-editor';
+import { 
+    __experimentalToggleGroupControl as ToggleGroupControl,
+    __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+    PanelBody, 
+    TextControl, 
+    RangeControl, 
+    SelectControl 
+} from '@wordpress/components';
+import { 
+    InspectorControls, 
+    useBlockProps, 
+    useInnerBlocksProps 
+} from '@wordpress/block-editor';
+
+/**
+ * Import custom
+ */
+import DynamicStyles from './styles';
+
+const BLOCK_TEMPLATE = [
+    [ 'gutena/newsletter-input-field' ],
+    [ 'gutena/newsletter-button-field' ]
+]
 
 export default function edit( { attributes, setAttributes } ) {
+    const { provider, mailchimpApiKey, mailchimpListID, textSuccess, textSubscribed, displayType, inputButtonGap } = attributes;
+    
 	const blockProps = useBlockProps( {
         className: 'gutena-newsletter-field-block',
+        style: DynamicStyles( attributes )
+    } );
+
+    const innerBlocksProps = useInnerBlocksProps( {
+        className: `gutena-newsletter-form ${ displayType }`
+    }, {
+        template: BLOCK_TEMPLATE,
+        allowedBlocks: [ 'gutena/newsletter-button-field', 'gutena/newsletter-button-field' ],
+        __experimentalLayout: true,
+        templateLock: "all"
     } );
 
     const helpText = (
@@ -14,10 +50,23 @@ export default function edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls key="settings">
-                <PanelBody title={ __( 'Provider', 'newsletter-block-gutena' ) }>
+                <PanelBody title={ __( 'Settings', 'gutena-tabs' ) } initialOpen={ true }>
+					<ToggleGroupControl label={ __( 'Display Type', 'gutena-testimonial' ) } value={ displayType } onChange={ ( value ) => setAttributes( { displayType: value } ) } isBlock>
+                        <ToggleGroupControlOption value="row" label={ __( 'Fluid', 'gutena-testimonial' ) } />
+                        <ToggleGroupControlOption value="column" label={ __( 'Seperated', 'gutena-testimonial' ) } />
+                    </ToggleGroupControl>
+                    <RangeControl
+                        label={ __( 'Gap between Input and Button (PX)', 'gutena-btns' ) }
+                        value={ inputButtonGap }
+                        onChange={ ( value ) => setAttributes( { inputButtonGap: value } ) }
+                        min={ 1 }
+                        max={ 50 }
+                    />
+                </PanelBody>
+                <PanelBody title={ __( 'Provider', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     <SelectControl
                         label={ __( 'Choose Provider', 'newsletter-block-gutena' ) }
-                        value={ attributes.provider }
+                        value={ provider }
                         options={ [
                             { label: __( '-- Select --', 'newsletter-block-gutena' ), value: '' },
                             { label: __( 'Mailchimp', 'newsletter-block-gutena' ), value: 'mailchimp' },
@@ -25,51 +74,38 @@ export default function edit( { attributes, setAttributes } ) {
                         onChange={ ( value ) => setAttributes( { provider: value } ) }
                     />
                     {
-                        ( attributes.provider === 'mailchimp' ) &&
+                        ( provider === 'mailchimp' ) &&
                         <>
                             <TextControl
                                 label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
-                                value={ attributes.mailchimpApiKey }
+                                value={ mailchimpApiKey }
                                 onChange={ ( value ) => setAttributes( { mailchimpApiKey: value } ) }
                             />
                             <TextControl
                                 label={ __( 'Mailchimp Audience ID', 'newsletter-block-gutena' ) }
-                                value={ attributes.mailchimpListID }
+                                value={ mailchimpListID }
                                 onChange={ ( value ) => setAttributes( { mailchimpListID: value } ) }
                                 help={ helpText} 
                             />
                         </>
                     }
                 </PanelBody>
-                <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ false }>
+                <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     <TextControl
                         label={ __( 'Success Message', 'newsletter-block-gutena' ) }
-                        value={ attributes.textSuccess }
+                        value={ textSuccess }
                         onChange={ ( value ) => setAttributes( { textSuccess: value } ) }
                     />
                     <TextControl
                         label={ __( 'Already Subscribed Message', 'newsletter-block-gutena' ) }
-                        value={ attributes.textSubscribed }
+                        value={ textSubscribed }
                         onChange={ ( value ) => setAttributes( { textSubscribed: value } ) }
                     />
                 </PanelBody>
-                <PanelColorSettings
-                    title={ __( 'Icon Color' ) }
-                    colorSettings={ [
-                        {
-                            value: attributes.iconColor,
-                            onChange: ( value ) => setAttributes( { iconColor: value } ),
-                            label: __( 'Color', 'newsletter-block-gutena' ),
-                        }
-                    ] }
-                />
             </InspectorControls>
 
 			<div { ...blockProps }>
-                <form className="gutena-newsletter-form">
-                    <input type="email" id="gutena-newsletter-field" className="gutena-newsletter-field" placeholder="name@email.com" />
-                    <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={ { color: attributes?.iconColor } } />
-                </form>
+                <div { ...innerBlocksProps } />
 			</div>
 		</>
 	);

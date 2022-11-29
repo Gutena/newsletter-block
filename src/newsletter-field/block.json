@@ -11,19 +11,7 @@
         "html": false,
 		"color": {
 			"background": true,
-            "text": true
-		},
-        "typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalFontFamily": true,
-			"__experimentalFontWeight": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalTextTransform": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true
-			}
+            "text": false
 		},
 		"__experimentalBorder": {
 			"color": true,
@@ -37,38 +25,13 @@
 		}
     },
     "attributes": {
-        "style": {
-            "type": "object",
-            "default": {
-                "color": {
-                    "text": "#000000",
-                    "background": "#EBEBEB"
-                },
-                "border": {
-                    "radius": "5px"
-                },
-                "spacing": {
-                    "padding": {
-                        "top": "12px",
-                        "bottom": "12px",
-                        "left": "20px",
-                        "right": "20px"
-                    },
-                    "margin": {
-                        "top": "10px",
-                        "bottom": "10px",
-                        "left": "0",
-                        "right": "0"
-                    }
-                },
-                "typography": {
-                    "fontSize": "18px"
-                }
-            }
-        },
-        "className": {
+        "displayType": {
             "type": "string",
-            "default": "gutena-block-field"
+            "default": "row"
+        },
+        "inputButtonGap": {
+            "type": "number",
+            "default": 10
         },
 		"textSuccess": {
             "type": "string",
@@ -86,10 +49,10 @@
         },
         "mailchimpListID": {
             "type": "string"
-        },
-        "iconColor": {
-            "type": "string"
         }
+    },
+    "providesContext": {
+        "gutenaNewsletterDisplayType": "displayType"
     },
     "editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

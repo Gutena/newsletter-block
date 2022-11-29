@@ -89,27 +89,10 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 * Render Gutena Newsletter field block.
 		 */
 		public function render_block( $attributes, $content, $block ) {
-			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
-			if ( strpos( $wrapper_attributes, 'style="' ) === false ) {
-				$wrapper_attributes = 'style="border-radius: 6px; color: #000000; background-color: #EBEBEB; padding-top: 12px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; margin-top: 10px; margin-bottom: 10px; margin-left: 0; margin-right: 0; font-size: 18px;" class="gutena-newsletter-field-block has-text-color has-background wp-block-gutena-newsletter-field"';
-			}
+			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' />";
+			$content = str_replace( '[GUTENA_NEWSLETTER_DATA]', $html, $content );
 			
-			$icon_color = ! empty( $attributes['iconColor'] ) ? $attributes['iconColor'] : 'inherit';
-
-			unset( $attributes['style'] );
-			unset( $attributes['iconColor'] );
-
-			$output = '<form class="gutena-newsletter-form">';
-			$output .= '<input type="email" id="gutena-newsletter-field" class="gutena-newsletter-field" placeholder="name@email.com" />';
-			$output .= "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' />";
-			$output .= '<input type="submit" id="gutena-newsletter-action" class="gutena-newsletter-action" value="→" style="color: ' . esc_attr( $icon_color ) . '" />';
-			$output .= '</form>';
-
-			return sprintf(
-				'<div %1$s>%2$s</div>',
-				$wrapper_attributes,
-				$output
-			);
+			return $content;
 		}
 
 		/**
