@@ -76,13 +76,16 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 				'render_callback' => [ $this, 'render_block' ],
 			] );
 
-			// Enqueue assets.
-			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlock', [
-				'ajax_url'      => admin_url( 'admin-ajax.php' ),
-				'nonce'         => wp_create_nonce( 'gutena_newsletter' ),
+			$args = apply_filters( 'gutena_newsletter_script_data', [
 				'in_process'    => __( 'Processing...', 'newsletter-block-gutena' ),
 				'email_invalid' => __( 'Email is not valid!', 'newsletter-block-gutena' ),
 			] );
+
+			// Enqueue assets.
+			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlock', array_merge( [
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'gutena_newsletter' ),
+			], $args ) );
 		}
 
 		/**

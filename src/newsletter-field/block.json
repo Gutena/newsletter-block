@@ -4,13 +4,12 @@
     "name": "gutena/newsletter-field",
     "title": "Newsletter Field",
     "category": "gutena",
-    "parent": [ "gutena/newsletter" ],
     "description": "Gutena Newsletter Field",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,
 		"color": {
-			"background": true,
+			"background": false,
             "text": false
 		},
 		"__experimentalBorder": {
@@ -49,6 +48,10 @@
         },
         "mailchimpListID": {
             "type": "string"
+        },
+        "textPosition": {
+            "type": "string",
+            "default": "left"
         }
     },
     "providesContext": {

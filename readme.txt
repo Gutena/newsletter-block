@@ -2,7 +2,7 @@
 Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp, block, newsletter block
 Requires at least: 5.8
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: 1.0.4
 Requires PHP: 5.6
 License: GPLv3
@@ -56,6 +56,14 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Activate Gutena Newsletter from your Plugins page.
 
 == Changelog ==
+
+= 1.0.5 =
+Release Date:
+
+* NEW: Completely Redesigned Block.
+* Added: Various New Styles.
+* Added: Screen Reader support.
+* Tested with WordPress v6.1.
 
 = 1.0.4 =
 Release Date: October 18, 2022

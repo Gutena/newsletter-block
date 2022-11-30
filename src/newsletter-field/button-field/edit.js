@@ -83,11 +83,11 @@ export default function edit( { attributes, context, setAttributes } ) {
 				<PanelBody title={ __( 'Settings', 'gutena-btns' ) } initialOpen={ true }>
                     {
                         displayType === 'column' && (
-                            <ToggleGroupControl label={ __( 'Button Position', 'gutena-testimonial' ) } value={ btnPosition } onChange={ ( value ) => setAttributes( { btnPosition: value } ) } isBlock>
-                                <ToggleGroupControlOption value="left" label={ __( 'Left', 'gutena-testimonial' ) } />
-                                <ToggleGroupControlOption value="center" label={ __( 'Center', 'gutena-testimonial' ) } />
-                                <ToggleGroupControlOption value="right" label={ __( 'Right', 'gutena-testimonial' ) } />
-                                <ToggleGroupControlOption value="auto" label={ __( 'Fluid', 'gutena-testimonial' ) } />
+                            <ToggleGroupControl label={ __( 'Button Position', 'newsletter-block-gutena' ) } value={ btnPosition } onChange={ ( value ) => setAttributes( { btnPosition: value } ) } isBlock>
+                                <ToggleGroupControlOption value="left" label={ __( 'Left', 'newsletter-block-gutena' ) } />
+                                <ToggleGroupControlOption value="center" label={ __( 'Center', 'newsletter-block-gutena' ) } />
+                                <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
+                                <ToggleGroupControlOption value="auto" label={ __( 'Fluid', 'newsletter-block-gutena' ) } />
                             </ToggleGroupControl>
                         )
                     }
@@ -98,7 +98,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                                 value={ btnMaxWidth }
                                 onChange={ ( value ) => setAttributes( { btnMaxWidth: value } ) }
                                 min={ 5 }
-                                max={ 300 }
+                                max={ 600 }
                                 allowReset={ true }
                             />
                         )
@@ -175,7 +175,7 @@ export default function edit( { attributes, context, setAttributes } ) {
 			</InspectorControls>
 
             <div { ...blockProps }>
-                <button type="submit" id="gutena-newsletter-action" className={ `gutena-newsletter-action icon-${ btnIconPosition } with-${ btnType }` }>
+                <button type="submit" id="gutena-newsletter-action" className={ `gutena-newsletter-action icon-${ btnIconPosition } with-${ btnType }` } aria-label="Submit Buton">
                     {
 						btnType !== 'text' && btnIcon && (
                             <span className="gutena-newsletter-button-icon">

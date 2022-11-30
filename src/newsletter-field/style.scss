@@ -1,13 +1,16 @@
 .wp-block-gutena-newsletter-field {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 
     .gutena-newsletter-form {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        gap: var( --gutena--newsletter-input-button-gap, 10px );
+        gap: var( --gutena--newsletter-input-button-gap );
         width: 100%;
         position: relative;
+        flex: 1;
 
         &.column {
             flex-direction: column;
@@ -107,6 +110,8 @@
                     svg {
                         height: 100%;
                         fill: var( --gutena--newsletter-icon-color );
+                        margin: 0 auto;
+                        display: block;
                     }
                 }
 
@@ -126,79 +131,97 @@
             }
         }
     }
-}
 
-.gutena-newsletter-message {
-    position: relative;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-
-    &.success {
-        color: #029A5A;
-
-        &.status::before {
-            border-color: #029A5A;
-            content: "✓"
+    &.message-center {
+        .gutena-newsletter-message {
+            text-align: center;
         }
     }
 
-    &.warning {
-        color: #DF5000;
-
-        &.status::before {
-            border-color: #DF5000;
-            content: "!"
+    &.message-right {
+        .gutena-newsletter-message {
+            text-align: right;
         }
     }
 
-    &.error {
-        color: #FA2323;
-
-        &.status::before {
-            border-color: #FA2323;
-            content: "✕"
+    // loader
+    .gutena-newsletter-message {
+        position: relative;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin-top: 14px;
+        text-align: left;
+    
+        &.success {
+            color: #029A5A;
+    
+            &.status .info-text::before {
+                border-color: #029A5A;
+                content: "✓"
+            }
         }
-    }
+    
+        &.warning {
+            color: #DF5000;
+    
+            &.status .info-text::before {
+                border-color: #DF5000;
+                content: "!"
+            }
+        }
+    
+        &.error {
+            color: #FA2323;
+    
+            &.status .info-text::before {
+                border-color: #FA2323;
+                content: "✕"
+            }
+        }
+    
+        &.status {
+            .info-text {
+                position: relative;
+                padding: 2px 0 2px 35px;
 
-    &.status {
-        padding: 2px 35px 2px;
-        
-        &::before {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            content: "!";
+                &::before {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    content: "!";
+                    border-radius: 50%;
+                    border: 2px solid white;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    font-weight: 500;
+                    font-size: 13px;
+                }
+            }
+        }
+    
+        .loader {
+            display: inline-block;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #029A5A;
             border-radius: 50%;
-            border: 2px solid white;
             width: 20px;
             height: 20px;
-            line-height: 20px;
-            text-align: center;
-            font-weight: 500;
-            font-size: 13px;
+            animation: gn-spin 2s linear infinite;
+            vertical-align: middle;
+            margin-right: 10px;
         }
-    }
-
-    .loader {
-        display: inline-block;
-        border: 2px solid #f3f3f3;
-        border-top: 2px solid #029A5A;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        animation: gn-spin 2s linear infinite;
-        vertical-align: middle;
-        margin-right: 10px;
-    }
-      
-    @keyframes gn-spin {
-        0% { 
-            transform: rotate(0deg);
+          
+        @keyframes gn-spin {
+            0% { 
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
+    }    
 }

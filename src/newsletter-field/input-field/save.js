@@ -18,7 +18,7 @@ export default function save( { attributes } ) {
 
     return (
         <div { ...blockProps }>
-            <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" />
+            <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" aria-label="Input Field" />
         </div>
 	);
 }

@@ -9,10 +9,10 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import DynamicStyles from './styles';
 
 export default function save( { attributes } ) {
-    const { displayType } = attributes;
+    const { displayType, textPosition } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'gutena-newsletter-field-block',
+        className: `gutena-newsletter-field-block message-${ textPosition }`,
         style: DynamicStyles( attributes )
     } );
 

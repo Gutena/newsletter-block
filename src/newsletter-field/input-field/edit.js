@@ -31,14 +31,14 @@ export default function edit( { attributes, setAttributes } ) {
             <InspectorControls>
 				<PanelBody title={ __( 'Settings', 'gutena-btns' ) } initialOpen={ true }>
                     <ToggleGroupControl 
-                        label={ __( 'Input Align', 'gutena-testimonial' ) } 
+                        label={ __( 'Input Text Align', 'newsletter-block-gutena' ) } 
                         value={ inputAlign } 
                         onChange={ ( value ) => setAttributes( { inputAlign: value } ) } 
                         isBlock
                     >
-                        <ToggleGroupControlOption value="left" label={ __( 'Left', 'gutena-testimonial' ) } />
-                        <ToggleGroupControlOption value="center" label={ __( 'Center', 'gutena-testimonial' ) } />
-                        <ToggleGroupControlOption value="right" label={ __( 'Right', 'gutena-testimonial' ) } />
+                        <ToggleGroupControlOption value="left" label={ __( 'Left', 'newsletter-block-gutena' ) } />
+                        <ToggleGroupControlOption value="center" label={ __( 'Center', 'newsletter-block-gutena' ) } />
+                        <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
                     </ToggleGroupControl>
                     <RangeControl
                         label={ __( 'Max Width (PX)', 'gutena-btns' ) }
@@ -52,7 +52,7 @@ export default function edit( { attributes, setAttributes } ) {
             </InspectorControls>
 
             <div { ...blockProps }>
-                <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" />
+                <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" aria-label="Input Field" />
             </div>
         </>
 	);

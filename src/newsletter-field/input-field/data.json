@@ -2,10 +2,10 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
     "name": "gutena/newsletter-input-field",
-    "title": "Newsletter Input Field",
+    "title": "Input Field",
     "category": "gutena",
     "parent": [ "gutena/newsletter-field" ],
-    "description": "Gutena Newsletter Input",
+    "description": "Gutena Newsletter Input Field",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,
@@ -33,7 +33,7 @@
 		},
 		"spacing": {
 			"padding": true,
-			"margin": true
+			"margin": false
 		}
     },
     "attributes": {
@@ -53,12 +53,6 @@
                         "bottom": "12px",
                         "left": "20px",
                         "right": "20px"
-                    },
-                    "margin": {
-                        "top": "10px",
-                        "bottom": "10px",
-                        "left": "0",
-                        "right": "0"
                     }
                 },
                 "typography": {

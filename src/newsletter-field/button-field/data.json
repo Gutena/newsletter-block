@@ -2,10 +2,10 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
     "name": "gutena/newsletter-button-field",
-    "title": "Newsletter Button Field",
+    "title": "Button Field",
     "category": "gutena",
     "parent": [ "gutena/newsletter-field" ],
-    "description": "Gutena Newsletter Button",
+    "description": "Gutena Newsletter Submit Button",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,
@@ -33,7 +33,7 @@
 		},
 		"spacing": {
 			"padding": true,
-			"margin": true
+			"margin": false
 		}
     },
     "attributes": {
@@ -41,8 +41,8 @@
             "type": "object",
             "default": {
                 "color": {
-                    "text": "#000000",
-                    "background": "#EBEBEB"
+                    "text": "#ffffff",
+                    "background": "#3F6DE4"
                 },
                 "border": {
                     "radius": "5px"
@@ -53,12 +53,6 @@
                         "bottom": "12px",
                         "left": "20px",
                         "right": "20px"
-                    },
-                    "margin": {
-                        "top": "10px",
-                        "bottom": "10px",
-                        "left": "0",
-                        "right": "0"
                     }
                 },
                 "typography": {

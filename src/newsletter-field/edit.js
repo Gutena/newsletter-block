@@ -21,16 +21,30 @@ import {
  */
 import DynamicStyles from './styles';
 
+/**
+ * Styles
+ */
+import './editor.scss';
+
 const BLOCK_TEMPLATE = [
     [ 'gutena/newsletter-input-field' ],
     [ 'gutena/newsletter-button-field' ]
 ]
 
 export default function edit( { attributes, setAttributes } ) {
-    const { provider, mailchimpApiKey, mailchimpListID, textSuccess, textSubscribed, displayType, inputButtonGap } = attributes;
+    const { 
+        provider, 
+        mailchimpApiKey, 
+        mailchimpListID, 
+        textSuccess, 
+        textSubscribed, 
+        textPosition, 
+        displayType, 
+        inputButtonGap 
+    } = attributes;
     
 	const blockProps = useBlockProps( {
-        className: 'gutena-newsletter-field-block',
+        className: `gutena-newsletter-field-block message-${ textPosition }`,
         style: DynamicStyles( attributes )
     } );
 
@@ -50,22 +64,22 @@ export default function edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls key="settings">
-                <PanelBody title={ __( 'Settings', 'gutena-tabs' ) } initialOpen={ true }>
-					<ToggleGroupControl label={ __( 'Display Type', 'gutena-testimonial' ) } value={ displayType } onChange={ ( value ) => setAttributes( { displayType: value } ) } isBlock>
-                        <ToggleGroupControlOption value="row" label={ __( 'Fluid', 'gutena-testimonial' ) } />
-                        <ToggleGroupControlOption value="column" label={ __( 'Seperated', 'gutena-testimonial' ) } />
+                <PanelBody title={ __( 'Settings', 'newsletter-block-gutena' ) } initialOpen={ true }>
+					<ToggleGroupControl label={ __( 'Display Type', 'newsletter-block-gutena' ) } value={ displayType } onChange={ ( value ) => setAttributes( { displayType: value } ) } isBlock>
+                        <ToggleGroupControlOption value="row" label={ __( 'Side by Side', 'newsletter-block-gutena' ) } />
+                        <ToggleGroupControlOption value="column" label={ __( 'Up and Down', 'newsletter-block-gutena' ) } />
                     </ToggleGroupControl>
                     <RangeControl
-                        label={ __( 'Gap between Input and Button (PX)', 'gutena-btns' ) }
+                        label={ __( 'Gap After Input (PX)', 'gutena-btns' ) }
                         value={ inputButtonGap }
                         onChange={ ( value ) => setAttributes( { inputButtonGap: value } ) }
-                        min={ 1 }
+                        min={ 0 }
                         max={ 50 }
                     />
                 </PanelBody>
-                <PanelBody title={ __( 'Provider', 'newsletter-block-gutena' ) } initialOpen={ true }>
+                <PanelBody title={ __( 'Platform', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     <SelectControl
-                        label={ __( 'Choose Provider', 'newsletter-block-gutena' ) }
+                        label={ __( 'Choose Platform', 'newsletter-block-gutena' ) }
                         value={ provider }
                         options={ [
                             { label: __( '-- Select --', 'newsletter-block-gutena' ), value: '' },
@@ -90,7 +104,12 @@ export default function edit( { attributes, setAttributes } ) {
                         </>
                     }
                 </PanelBody>
-                <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ true }>
+                <PanelBody title={ __( 'Messages after Submit', 'newsletter-block-gutena' ) } initialOpen={ false }>
+                    <ToggleGroupControl label={ __( 'Message Align', 'newsletter-block-gutena' ) } value={ textPosition } onChange={ ( value ) => setAttributes( { textPosition: value } ) } isBlock>
+                        <ToggleGroupControlOption value="left" label={ __( 'Left', 'newsletter-block-gutena' ) } />
+                        <ToggleGroupControlOption value="center" label={ __( 'Center', 'newsletter-block-gutena' ) } />
+                        <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
+                    </ToggleGroupControl>
                     <TextControl
                         label={ __( 'Success Message', 'newsletter-block-gutena' ) }
                         value={ textSuccess }

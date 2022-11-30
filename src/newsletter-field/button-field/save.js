@@ -38,7 +38,7 @@ export default function save( { attributes } ) {
 
     return (
         <div { ...blockProps }>
-            <button type="submit" id="gutena-newsletter-action" className={ `gutena-newsletter-action icon-${ btnIconPosition } with-${ btnType }` }>
+            <button type="submit" id="gutena-newsletter-action" className={ `gutena-newsletter-action icon-${ btnIconPosition } with-${ btnType }` } aria-label="Submit Buton">
                 {
                     btnType !== 'text' && btnIcon && (
                         <span className="gutena-newsletter-button-icon">
