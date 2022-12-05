@@ -12,7 +12,7 @@ export default function save( { attributes } ) {
     const { inputAlign } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'gutena-newsletter-field-input-block',
+        className: 'gutena-newsletter-form-input-block',
         style: DynamicStyles( attributes )
     } );
 

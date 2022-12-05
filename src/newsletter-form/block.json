@@ -1,7 +1,8 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-    "name": "gutena/newsletter-field",
+    "name": "gutena/newsletter-form",
+    "parent": [ "gutena/newsletter", "core/column", "core/group" ],
     "title": "Newsletter Form",
     "category": "gutena",
     "description": "Gutena Newsletter Form",

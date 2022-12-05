@@ -4,7 +4,7 @@
     "name": "gutena/newsletter-submit-button",
     "title": "Submit Button",
     "category": "gutena",
-    "parent": [ "gutena/newsletter-field" ],
+    "parent": [ "gutena/newsletter-form" ],
     "description": "Gutena Newsletter Submit Button",
     "textdomain": "newsletter-block-gutena",
     "supports": {
@@ -81,7 +81,7 @@
         },
         "btnIconPosition": {
             "type": "string",
-            "default": "left"
+            "default": "right"
         },
         "btnIconSize": {
             "type": "number",
@@ -89,7 +89,7 @@
         },
         "btnIconColor": {
             "type": "string",
-            "default": "#000000"
+            "default": "#ffffff"
         },
         "btnIconSpacing": {
             "type": "number",

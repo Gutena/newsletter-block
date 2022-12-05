@@ -22,7 +22,7 @@ export default function edit( { attributes, setAttributes } ) {
     const { inputMaxWidth, inputAlign } = attributes;
 
 	const blockProps = useBlockProps( {
-        className: 'gutena-newsletter-field-input-block',
+        className: 'gutena-newsletter-form-input-block',
         style: DynamicStyles( attributes )
     } );
 

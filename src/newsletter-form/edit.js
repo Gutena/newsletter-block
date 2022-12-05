@@ -44,7 +44,7 @@ export default function edit( { attributes, setAttributes } ) {
     } = attributes;
     
 	const blockProps = useBlockProps( {
-        className: `gutena-newsletter-field-block message-${ textPosition }`,
+        className: `gutena-newsletter-form-block message-${ textPosition }`,
         style: DynamicStyles( attributes )
     } );
 
@@ -52,7 +52,7 @@ export default function edit( { attributes, setAttributes } ) {
         className: `gutena-newsletter-form ${ displayType }`
     }, {
         template: BLOCK_TEMPLATE,
-        allowedBlocks: [ 'gutena/newsletter-submit-button', 'gutena/newsletter-submit-button' ],
+        allowedBlocks: [ 'gutena/newsletter-input-field', 'gutena/newsletter-submit-button' ],
         __experimentalLayout: true,
         templateLock: "all"
     } );

@@ -1,7 +1,7 @@
 document.addEventListener( 'DOMContentLoaded', () => {
-    if ( ! gutenaNewsletterBlock ) return;
+    if ( ! window.gutenaNewsletterBlock ) return;
 
-    let nodeList = document.querySelectorAll( '.gutena-newsletter-form' );
+    let nodeList = document.querySelectorAll( '.gutena-newsletter-form-block .gutena-newsletter-form' );
     for ( let i = 0; i < nodeList.length; i++ ) {
         nodeList[i]?.addEventListener( 'submit', function( e ) {
             e.preventDefault();
@@ -19,15 +19,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
             }
 
             if ( ! validateEmail( emailAddress ) ) {
-                currentNode.after( 
-                    Object.assign( document.createElement( 'div' ), { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ gutenaNewsletterBlock.email_invalid }</span>`, className: 'gutena-newsletter-message status error' } )
-                )
+                createNotice( currentNode, { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ gutenaNewsletterBlock.email_invalid }</span>`, className: 'gutena-newsletter-message status error' } )
                 return;
             }
 
-            currentNode.after( 
-                Object.assign( document.createElement( 'div' ), { innerHTML: `<span class="loader"></span><span id="gutena-newsletter-info-text" class="info-text">${ gutenaNewsletterBlock.in_process }</span>`, className: 'gutena-newsletter-message success' } )
-            )
+            createNotice( currentNode, { innerHTML: `<span class="loader"></span><span id="gutena-newsletter-info-text" class="info-text">${ gutenaNewsletterBlock.in_process }</span>`, className: 'gutena-newsletter-message success' } )
             
             const data = new FormData();
             data.append( 'action', 'gutena_subscribe_newsletter' );
@@ -50,19 +46,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
                     if ( data.status == 'success' ) {
                         currentNode.querySelector( '#gutena-newsletter-field' ).value = '';
                     }
-                    currentNode.after( 
-                        Object.assign( document.createElement( 'div' ), { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ data.message }</span>`, className: 'gutena-newsletter-message status ' + data.status } )
-                    )
+                    createNotice( currentNode, { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ data.message }</span>`, className: 'gutena-newsletter-message status ' + data.status } )
                 }
             } )
             .catch( ( error ) => {
-                currentNode.after( 
-                    Object.assign( document.createElement( 'div' ), { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ error }</span>`, className: 'gutena-newsletter-message error' } )
-                )
+                createNotice( currentNode, { innerHTML: `<span id="gutena-newsletter-info-text" class="info-text">${ error }</span>`, className: 'gutena-newsletter-message error' } )
             } );
         } );
     }
 } );
+
+const createNotice = ( node, data ) => {
+    node.after( 
+        Object.assign( document.createElement( 'div' ), data )
+    )
+}
 
 const validateEmail = email => {
     return email.match(

@@ -11,7 +11,7 @@ const BLOCK_TEMPLATE = [
         [ "core/column", { className: "gutena-newsletter-col-last", "style": { "spacing": { "blockGap": "6px" } } }, [
             [ "core/heading", { content: "Subscribe", "style":{ "typography": { "fontSize": "28px" }, "spacing": { "margin": { "top": "0px", "right": "0px", "bottom": "6px", "left": "0px" } } } } ],
             [ "core/paragraph", { content: "Sign up for free content.", "style": { "typography": { "fontSize": "14px" }, "spacing": { "margin": { "top": "0px", "right": "0px", "bottom": "10px", "left": "0px" } } }, "color": { "text": "#505050" } } ],
-			[ "gutena/newsletter-field" ],
+			[ "gutena/newsletter-form" ],
             [ "core/paragraph", { content: "I won’t send you spam. Unsubscribe at any time.", "style": { "typography": { "fontSize": "14px" } }, "color": { "text": "#505050" } } ],
         ] ],
     ] ]

@@ -12,20 +12,17 @@ export default function save( { attributes } ) {
     const { displayType, textPosition } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: `gutena-newsletter-field-block message-${ textPosition }`,
+        className: `gutena-newsletter-form-block message-${ textPosition }`,
         style: DynamicStyles( attributes )
     } );
 
-    const { children, ...innerBlocksProps } = useInnerBlocksProps.save( {
+    const innerBlocksProps = useInnerBlocksProps.save( {
         className: `gutena-newsletter-form ${ displayType }`
     } );
 
     return (
         <div { ...blockProps }>
-            <form { ...innerBlocksProps }>
-                { children }
-                [GUTENA_NEWSLETTER_DATA]
-            </form>
+            <form { ...innerBlocksProps } />
         </div>
     );
 }

@@ -1,4 +1,4 @@
-.wp-block-gutena-newsletter-field {
+.wp-block-gutena-newsletter-form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -15,7 +15,7 @@
         &.column {
             flex-direction: column;
 
-            .gutena-newsletter-field-input-block {
+            .gutena-newsletter-form-input-block {
                 margin-bottom: 0 !important;
                 align-self: auto;
             }
@@ -40,7 +40,7 @@
             }
         }
 
-        .gutena-newsletter-field-input-block {
+        .gutena-newsletter-form-input-block {
             position: relative;
             display: flex;
             max-width: var( --gutena--newsletter-input-max-width );
@@ -150,7 +150,7 @@
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
-        margin-top: 14px;
+        margin: 14px 0 3px;
         text-align: left;
     
         &.success {
@@ -198,7 +198,7 @@
                     line-height: 20px;
                     text-align: center;
                     font-weight: 500;
-                    font-size: 13px;
+                    font-size: 14px;
                 }
             }
         }
@@ -212,7 +212,7 @@
             height: 20px;
             animation: gn-spin 2s linear infinite;
             vertical-align: middle;
-            margin-right: 10px;
+            margin: -4px 10px -4px 0;
         }
           
         @keyframes gn-spin {

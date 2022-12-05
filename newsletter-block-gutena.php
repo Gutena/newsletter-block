@@ -86,25 +86,33 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 				'email_invalid' => __( 'Email is not valid!', 'newsletter-block-gutena' ),
 			] );
 
-			// Enqueue assets.
-			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlock', array_merge( [
+			$args = array_merge( [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'gutena_newsletter' ),
-			], $args ) );
+			], $args );
+
+			// Enqueue assets.
+			wp_localize_script( 'gutena-newsletter-form-script', 'gutenaNewsletterBlock', $args );
+
+			// Enqueue assets legacy block.
+			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlockLegacy', $args );
 		}
 
 		/**
-		 * Render Gutena Newsletter field block.
+		 * Render Gutena Newsletter Form block.
 		 */
 		public function render_block( $attributes, $content, $block ) {
-			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' />";
-			$content = str_replace( '[GUTENA_NEWSLETTER_DATA]', $html, $content );
+			unset( $attributes['style'] );
+			unset( $attributes['iconColor'] );
+
+			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' /></form>";
+			$content = str_replace( '</form>', $html, $content );
 			
 			return $content;
 		}
 
 		/**
-		 * Render Gutena Newsletter field block.
+		 * Render Gutena Newsletter field legacy block.
 		 */
 		public function render_block_legacy( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
@@ -158,7 +166,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			if ( empty( $_POST['data'] ) ) {
 				wp_send_json( [
 					'status'  => 'error',
-					'message' => __( 'Error occured!', 'newsletter-block-gutena' ),
+					'message' => __( 'Settings data missing!', 'newsletter-block-gutena' ),
 				] );
 			}
 			
@@ -166,7 +174,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			if ( 0 !== json_last_error() || empty( $data ) ) {
 				wp_send_json( [
 					'status'  => 'error',
-					'message' => __( 'Error occured!', 'newsletter-block-gutena' ),
+					'message' => __( 'Error occured! Can\'t parse settings data.', 'newsletter-block-gutena' ),
 				] );
 			}
 
@@ -177,8 +185,8 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 				'provider'        => '',
 				'mailchimpApiKey' => '',
 				'mailchimpListID' => '',
-				'textSuccess'     => 'Thank you for subscribing!',
-				'textSubscribed'  => 'You are already subscribed with us!',
+				'textSuccess'     => __( 'Thank you for subscribing!', 'newsletter-block-gutena' ),
+				'textSubscribed'  => __( 'You are already subscribed with us!', 'newsletter-block-gutena' ),
 			] );
 
 			if ( 'mailchimp' === $data['provider'] ) {
@@ -209,25 +217,27 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			list( , $datacentre ) = explode( '-', $api_key );
 			$api_endpoint = str_replace( '<dc>', $datacentre, $api_endpoint );
 
+			$body = apply_filters( 'gutena_newsletter_mailchimp_data', [
+				'email_address'     => $email,
+				'merge_fields'      => [
+					'FNAME' => $fname,
+					'LNAME' => $lname,
+					'PHONE' => $phone,
+				],
+				'email_type'        => 'html',
+				'status'            => 'subscribed',
+				'double_optin'      => $double_optin,
+				'update_existing'   => true,
+				'replace_interests' => false,
+				'send_welcome'      => false,
+			] );
+
 			$response = wp_remote_post( $api_endpoint . '/lists/' . $list_id . '/members', [
 				'headers'   => [
 					'Content-Type'  => 'application/json',
 					'Authorization' => 'Basic '. base64_encode( 'user:' . $api_key ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				],
-				'body'      => wp_json_encode( [
-					'email_address'     => $email,
-					'merge_fields'      => [
-						'FNAME' => $fname,
-						'LNAME' => $lname,
-						'PHONE' => $phone,
-					],
-					'email_type'        => 'html',
-					'status'            => 'subscribed',
-					'double_optin'      => $double_optin,
-					'update_existing'   => true,
-					'replace_interests' => false,
-					'send_welcome'      => false,
-				] ),
+				'body'      => $body,
 				'sslverify' => false,
 			] );
 
