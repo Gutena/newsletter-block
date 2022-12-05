@@ -114,7 +114,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		}
 
 		/**
-		 * Render Gutena Newsletter field legacy block.
+		 * Render Gutena Newsletter Field legacy block.
 		 */
 		public function render_block_legacy( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
