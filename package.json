@@ -21,14 +21,6 @@
 		"gulp-zip": "^5.1.0"
 	},
 	"dependencies": {
-		"@fonticonpicker/react-fonticonpicker": "^1.2.0",
-		"@wordpress/icons": "^9.13.0",
-		"classnames": "^2.3.2",
-		"gulp-cli": "^2.3.0",
-		"html-react-parser": "^3.0.4",
-		"prop-types": "^15.8.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-transition-group": "^4.4.5"
+		"gulp-cli": "^2.3.0"
 	}
 }
