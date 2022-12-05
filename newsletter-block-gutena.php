@@ -89,6 +89,21 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 * Render Gutena Newsletter field block.
 		 */
 		public function render_block( $attributes, $content, $block ) {
+			unset( $attributes['style'] );
+			unset( $attributes['displayType'] );
+			unset( $attributes['inputButtonGap'] );
+			unset( $attributes['textPosition'] );
+
+			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' /></form>";
+			$content = str_replace( '</form>', $html, $content );
+			
+			return $content;
+		}
+
+		/**
+		 * Render Gutena Newsletter Field legacy block.
+		 */
+		public function render_block_legacy( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
 			if ( strpos( $wrapper_attributes, 'style="' ) === false ) {
 				$wrapper_attributes = 'style="border-radius: 6px; color: #000000; background-color: #EBEBEB; padding-top: 12px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; margin-top: 10px; margin-bottom: 10px; margin-left: 0; margin-right: 0; font-size: 18px;" class="gutena-newsletter-field-block has-text-color has-background wp-block-gutena-newsletter-field"';
