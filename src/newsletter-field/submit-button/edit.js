@@ -73,7 +73,7 @@ export default function edit( { attributes, context, setAttributes } ) {
     }
 
     const blockProps = useBlockProps( {
-        className: `gutena-newsletter-field-button-block ${ btnPosition }`,
+        className: `gutena-newsletter-submit-button-block ${ btnPosition }`,
         style: DynamicStyles( attributes )
     } );
 
@@ -188,7 +188,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                             <span className="gutena-newsletter-button-text">
                                 <RichText
                                     tagName="span"
-                                    placeholder={ __( '..', 'gutena-btns' ) }
+                                    placeholder={ __( 'Enter text...', 'gutena-btns' ) }
                                     value={ btnText }
                                     onChange={ value => setAttributes( { btnText: value } ) }
                                     keepPlaceholderOnFocus

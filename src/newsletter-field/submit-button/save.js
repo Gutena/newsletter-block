@@ -32,7 +32,7 @@ export default function save( { attributes } ) {
     }
 
     const blockProps = useBlockProps.save( {
-        className: `gutena-newsletter-field-button-block ${ btnPosition }`,
+        className: `gutena-newsletter-submit-button-block ${ btnPosition }`,
         style: DynamicStyles( attributes )
     } );
 

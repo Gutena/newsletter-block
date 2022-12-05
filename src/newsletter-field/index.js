@@ -6,8 +6,8 @@ import { registerBlockType } from '@wordpress/blocks';
 /**
  * Child block
  */
-import './button-field/index'
 import './input-field/index'
+import './submit-button/index'
 
 /**
  * Internal dependencies

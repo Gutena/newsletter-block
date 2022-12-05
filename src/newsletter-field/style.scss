@@ -20,7 +20,7 @@
                 align-self: auto;
             }
 
-            .gutena-newsletter-field-button-block {
+            .gutena-newsletter-submit-button-block {
                 margin-top: 0 !important;
 
                 &.left {
@@ -79,7 +79,7 @@
             }
         }
 
-        .gutena-newsletter-field-button-block {
+        .gutena-newsletter-submit-button-block {
             position: relative;
             display: flex;
             justify-content: center;
@@ -109,7 +109,7 @@
                     
                     svg {
                         height: 100%;
-                        fill: var( --gutena--newsletter-icon-color );
+                        fill: var( --gutena--newsletter-button-icon-color );
                         margin: 0 auto;
                         display: block;
                     }
@@ -117,7 +117,7 @@
 
                 &.icon-left {
                     &.with-text-icon .gutena-newsletter-button-icon {
-                        margin-right: var( --gutena--newsletter-icon-spacing, 10px );
+                        margin-right: var( --gutena--newsletter-button-icon-spacing, 10px );
                     }
                 }
 
@@ -125,7 +125,7 @@
                     flex-direction: row-reverse;
 
                     &.with-text-icon .gutena-newsletter-button-icon {
-                        margin-left: var( --gutena--newsletter-icon-spacing, 10px );
+                        margin-left: var( --gutena--newsletter-button-icon-spacing, 10px );
                     }
                 }
             }

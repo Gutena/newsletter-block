@@ -2,9 +2,9 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
     "name": "gutena/newsletter-field",
-    "title": "Newsletter Field",
+    "title": "Newsletter Form",
     "category": "gutena",
-    "description": "Gutena Newsletter Field",
+    "description": "Gutena Newsletter Form",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,

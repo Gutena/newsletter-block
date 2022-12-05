@@ -28,7 +28,7 @@ import './editor.scss';
 
 const BLOCK_TEMPLATE = [
     [ 'gutena/newsletter-input-field' ],
-    [ 'gutena/newsletter-button-field' ]
+    [ 'gutena/newsletter-submit-button' ]
 ]
 
 export default function edit( { attributes, setAttributes } ) {
@@ -52,7 +52,7 @@ export default function edit( { attributes, setAttributes } ) {
         className: `gutena-newsletter-form ${ displayType }`
     }, {
         template: BLOCK_TEMPLATE,
-        allowedBlocks: [ 'gutena/newsletter-button-field', 'gutena/newsletter-button-field' ],
+        allowedBlocks: [ 'gutena/newsletter-submit-button', 'gutena/newsletter-submit-button' ],
         __experimentalLayout: true,
         templateLock: "all"
     } );
