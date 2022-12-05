@@ -100,3 +100,7 @@ Release Date: July 27, 2022
 Release Date: July 26, 2022
 
 * Initial Release on WordPress.org.
+
+== Upgrade Notice ==
+
+Added "Newsletter Form" Block and the existing "Newsletter Field" block will be considered as legacy. Please Update your old block to the new one, as we are not supporting the legacy one.

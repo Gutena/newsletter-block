@@ -5,7 +5,9 @@
   "parent": [
     "gutena/newsletter",
     "core/column",
-    "core/group"
+    "core/group",
+    "core/row",
+    "core/stack"
   ],
   "title": "Newsletter Form",
   "category": "gutena",
