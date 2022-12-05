@@ -2,10 +2,10 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
     "name": "gutena/newsletter-field",
-    "title": "Newsletter Field (Legacy)",
+    "title": "Newsletter Field",
     "category": "gutena",
-    "parent": [],
-    "description": "Gutena Newsletter Field (Legacy)",
+    "parent": [ "gutena/newsletter" ],
+    "description": "Gutena Newsletter Field",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,

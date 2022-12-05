@@ -66,10 +66,10 @@ export default function edit( { attributes, setAttributes } ) {
             </InspectorControls>
 
 			<div { ...blockProps }>
-                <div className="gutena-newsletter-form">
+                <form className="gutena-newsletter-form">
                     <input type="email" id="gutena-newsletter-field" className="gutena-newsletter-field" placeholder="name@email.com" />
                     <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={ { color: attributes?.iconColor } } />
-                </div>
+                </form>
 			</div>
 		</>
 	);
