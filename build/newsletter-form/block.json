@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gutena/newsletter-form",
+  "parent": [
+    "gutena/newsletter",
+    "core/column",
+    "core/group",
+    "core/row",
+    "core/stack"
+  ],
+  "title": "Newsletter Form",
+  "category": "gutena",
+  "description": "Gutena Newsletter Form",
+  "textdomain": "newsletter-block-gutena",
+  "supports": {
+    "html": false,
+    "color": {
+      "background": false,
+      "text": false
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "attributes": {
+    "displayType": {
+      "type": "string",
+      "default": "row"
+    },
+    "inputButtonGap": {
+      "type": "number",
+      "default": 10
+    },
+    "textSuccess": {
+      "type": "string",
+      "default": "Thank you for subscribing!"
+    },
+    "textSubscribed": {
+      "type": "string",
+      "default": "You're already subscribed with us!"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "mailchimpApiKey": {
+      "type": "string"
+    },
+    "mailchimpListID": {
+      "type": "string"
+    },
+    "textPosition": {
+      "type": "string",
+      "default": "left"
+    }
+  },
+  "providesContext": {
+    "gutenaNewsletterDisplayType": "displayType"
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "script": "file:./view.js",
+  "style": "file:./style-index.css"
+}

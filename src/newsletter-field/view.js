@@ -1,8 +1,7 @@
 document.addEventListener( 'DOMContentLoaded', () => {
-    if ( ! gutenaNewsletterBlock ) {
-        return;
-    }
-    let nodeList = document.querySelectorAll( '.gutena-newsletter-form' );
+    if ( ! window.gutenaNewsletterBlockLegacy ) return;
+    
+    let nodeList = document.querySelectorAll( '.gutena-newsletter-field-block .gutena-newsletter-form' );
     for ( let i = 0; i < nodeList.length; i++ ) {
         nodeList[i]?.addEventListener( 'submit', function( e ) {
             e.preventDefault();
@@ -19,23 +18,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
             }
 
             if ( ! validateEmail( emailAddress ) ) {
-                parentNode.after( 
-                    Object.assign( document.createElement( 'div' ), { textContent: gutenaNewsletterBlock.email_invalid, className: 'gutena-newsletter-message status error' } )
-                )
+                createNotice( parentNode, { textContent: gutenaNewsletterBlockLegacy.email_invalid, className: 'gutena-newsletter-message status error' } )
                 return;
             }
 
-            parentNode.after( 
-                Object.assign( document.createElement( 'div' ), { innerHTML: '<span class="loader"></span>' + gutenaNewsletterBlock.in_process, className: 'gutena-newsletter-message success' } )
-            )
-            
+            createNotice( parentNode, { innerHTML: '<span class="loader"></span>' + gutenaNewsletterBlockLegacy.in_process, className: 'gutena-newsletter-message success' } )
+
             const data = new FormData();
             data.append( 'action', 'gutena_subscribe_newsletter' );
-            data.append( 'nonce', gutenaNewsletterBlock.nonce );
+            data.append( 'nonce', gutenaNewsletterBlockLegacy.nonce );
             data.append( 'email', emailAddress );
             data.append( 'data', settingsData );
 
-            fetch( gutenaNewsletterBlock?.ajax_url, {
+            fetch( gutenaNewsletterBlockLegacy?.ajax_url, {
                 method: "POST",
                 credentials: 'same-origin',
                 body: data
@@ -50,19 +45,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
                     if ( data.status == 'success' ) {
                         parentNode.querySelector( '#gutena-newsletter-field' ).value = '';
                     }
-                    parentNode.after( 
-                        Object.assign( document.createElement( 'div' ), { textContent: data.message, className: 'gutena-newsletter-message status ' + data.status } )
-                    )
+                    createNotice( parentNode, { textContent: data.message, className: 'gutena-newsletter-message status ' + data.status } )
                 }
             } )
             .catch( ( error ) => {
-                parentNode.after( 
-                    Object.assign( document.createElement( 'div' ), { textContent: error, className: 'gutena-newsletter-message error' } )
-                )
+                createNotice( parentNode, { textContent: error, className: 'gutena-newsletter-message error' } )
             } );
         } );
     }
 } );
+
+const createNotice = ( node, data ) => {
+    node.after( 
+        Object.assign( document.createElement( 'div' ), data )
+    )
+}
 
 const validateEmail = email => {
     return email.match(
