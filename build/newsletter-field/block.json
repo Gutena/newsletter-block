@@ -2,15 +2,30 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "gutena/newsletter-field",
-  "title": "Newsletter Form",
+  "title": "Newsletter Field (Legacy)",
   "category": "gutena",
-  "description": "Gutena Newsletter Form",
+  "parent": [
+    "gutena/newsletter"
+  ],
+  "description": "Gutena Newsletter Field (Legacy)",
   "textdomain": "newsletter-block-gutena",
   "supports": {
     "html": false,
     "color": {
-      "background": false,
-      "text": false
+      "background": true,
+      "text": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalTextTransform": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
     },
     "__experimentalBorder": {
       "color": true,
@@ -24,13 +39,38 @@
     }
   },
   "attributes": {
-    "displayType": {
-      "type": "string",
-      "default": "row"
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "text": "#000000",
+          "background": "#EBEBEB"
+        },
+        "border": {
+          "radius": "5px"
+        },
+        "spacing": {
+          "padding": {
+            "top": "12px",
+            "bottom": "12px",
+            "left": "20px",
+            "right": "20px"
+          },
+          "margin": {
+            "top": "10px",
+            "bottom": "10px",
+            "left": "0",
+            "right": "0"
+          }
+        },
+        "typography": {
+          "fontSize": "18px"
+        }
+      }
     },
-    "inputButtonGap": {
-      "type": "number",
-      "default": 10
+    "className": {
+      "type": "string",
+      "default": "gutena-block-field"
     },
     "textSuccess": {
       "type": "string",
@@ -49,13 +89,9 @@
     "mailchimpListID": {
       "type": "string"
     },
-    "textPosition": {
-      "type": "string",
-      "default": "left"
+    "iconColor": {
+      "type": "string"
     }
-  },
-  "providesContext": {
-    "gutenaNewsletterDisplayType": "displayType"
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
