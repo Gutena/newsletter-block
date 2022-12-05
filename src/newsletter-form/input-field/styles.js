@@ -1,15 +1,14 @@
 /**
- * External dependencies
+ * Custom dependencies
  */
-import { includes, pickBy } from 'lodash';
+import FilterStyles from '../../utils/filter';
 
 export default function DynamicStyles( attributes ) {
 	const { inputMaxWidth } = attributes
 
-	const styleProps = pickBy( {
+	const styleProps = FilterStyles( {
         '--gutena--newsletter-input-max-width': inputMaxWidth + 'px',
-        }, value => typeof value !== 'undefined' && '' !== value && 'NaN' !== value && 'none' !== value && 'px' !== value && ! includes( value, 'undefined' )
-    )
+    } )
 
 	return styleProps
 }

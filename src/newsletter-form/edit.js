@@ -70,11 +70,11 @@ export default function edit( { attributes, setAttributes } ) {
                         <ToggleGroupControlOption value="column" label={ __( 'Up and Down', 'newsletter-block-gutena' ) } />
                     </ToggleGroupControl>
                     <RangeControl
-                        label={ __( 'Gap After Input (PX)', 'gutena-btns' ) }
+                        label={ __( 'Gap After Input (PX)', 'newsletter-block-gutena' ) }
                         value={ inputButtonGap }
                         onChange={ ( value ) => setAttributes( { inputButtonGap: value } ) }
                         min={ 0 }
-                        max={ 50 }
+                        max={ 500 }
                     />
                 </PanelBody>
                 <PanelBody title={ __( 'Platform', 'newsletter-block-gutena' ) } initialOpen={ true }>

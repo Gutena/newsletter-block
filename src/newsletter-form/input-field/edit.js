@@ -29,7 +29,7 @@ export default function edit( { attributes, setAttributes } ) {
 	return (
         <>
             <InspectorControls>
-				<PanelBody title={ __( 'Settings', 'gutena-btns' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Settings', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     <ToggleGroupControl 
                         label={ __( 'Input Text Align', 'newsletter-block-gutena' ) } 
                         value={ inputAlign } 
@@ -41,7 +41,7 @@ export default function edit( { attributes, setAttributes } ) {
                         <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
                     </ToggleGroupControl>
                     <RangeControl
-                        label={ __( 'Max Width (PX)', 'gutena-btns' ) }
+                        label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
                         value={ inputMaxWidth }
                         onChange={ ( value ) => setAttributes( { inputMaxWidth: value } ) }
                         min={ 2 }

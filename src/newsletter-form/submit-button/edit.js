@@ -80,7 +80,7 @@ export default function edit( { attributes, context, setAttributes } ) {
 	return (
         <>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'gutena-btns' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Settings', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     {
                         displayType === 'column' && (
                             <ToggleGroupControl label={ __( 'Button Position', 'newsletter-block-gutena' ) } value={ btnPosition } onChange={ ( value ) => setAttributes( { btnPosition: value } ) } isBlock>
@@ -94,7 +94,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                     {
                         displayType === 'column' && btnPosition !== 'auto' && (
                             <RangeControl
-                                label={ __( 'Max Width (PX)', 'gutena-btns' ) }
+                                label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
                                 value={ btnMaxWidth }
                                 onChange={ ( value ) => setAttributes( { btnMaxWidth: value } ) }
                                 min={ 5 }
@@ -104,7 +104,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                         )
                     }
                     <SelectControl
-                        label={ __( 'Button Type', 'gutena-btns' ) }
+                        label={ __( 'Button Type', 'newsletter-block-gutena' ) }
                         value={ btnType }
                         options={ [
                             { label: 'Only Text', value: 'text' },
@@ -115,7 +115,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                     />
                     {
 						btnType !== 'text' && (
-                            <BaseControl label={ __( 'Select Icon', 'gutena-btns' ) } __nextHasNoMarginBottom={ true } className="gutena-font-icon-picker">
+                            <BaseControl label={ __( 'Select Icon', 'newsletter-block-gutena' ) } __nextHasNoMarginBottom={ true } className="gutena-font-icon-picker">
                                 <FontIconPicker
                                     icons={ icons }
                                     value={ btnIcon }
@@ -132,13 +132,13 @@ export default function edit( { attributes, context, setAttributes } ) {
 						btnType !== 'text' && btnIcon && (
                             <>
                                 <RangeControl
-                                    label={ __( 'Icon Size (PX)', 'gutena-btns' ) }
+                                    label={ __( 'Icon Size (PX)', 'newsletter-block-gutena' ) }
                                     value={ btnIconSize }
                                     onChange={ ( value ) => setAttributes( { btnIconSize: value } ) }
                                     min={ 2 }
                                     max={ 100 }
                                 />
-                                <BaseControl label={ __( 'Icon Color', 'gutena-btns' ) } marginBottom={ 5 }>
+                                <BaseControl label={ __( 'Icon Color', 'newsletter-block-gutena' ) } marginBottom={ 5 }>
                                     <ColorPalette
                                         colors={ [] }
                                         value={ btnIconColor }
@@ -152,7 +152,7 @@ export default function edit( { attributes, context, setAttributes } ) {
 						btnType === 'text-icon' && btnIcon && (
                             <>
                                 <SelectControl
-									label={ __( 'Icon Position', 'gutena-btns' ) }
+									label={ __( 'Icon Position', 'newsletter-block-gutena' ) }
 									value={ btnIconPosition }
 									options={ [
 										{ label: 'Left', value: 'left' },
@@ -162,7 +162,7 @@ export default function edit( { attributes, context, setAttributes } ) {
 									__nextHasNoMarginBottom
 								/>
                                 <RangeControl
-                                    label={ __( 'Gap between Icon and Title (PX)', 'gutena-btns' ) }
+                                    label={ __( 'Gap between Icon and Title (PX)', 'newsletter-block-gutena' ) }
                                     value={ btnIconSpacing }
                                     onChange={ ( value ) => setAttributes( { btnIconSpacing: value } ) }
                                     min={ 1 }
@@ -188,7 +188,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                             <span className="gutena-newsletter-button-text">
                                 <RichText
                                     tagName="span"
-                                    placeholder={ __( 'Enter text...', 'gutena-btns' ) }
+                                    placeholder={ __( 'Enter text...', 'newsletter-block-gutena' ) }
                                     value={ btnText }
                                     onChange={ value => setAttributes( { btnText: value } ) }
                                     keepPlaceholderOnFocus

@@ -1,17 +1,16 @@
 /**
- * External dependencies
+ * Custom dependencies
  */
-import { includes, pickBy } from 'lodash';
+import FilterStyles from '../../utils/filter';
 
 export default function DynamicStyles( attributes ) {
 	const { btnMaxWidth, btnIconSpacing, btnIconColor } = attributes
 
-	const styleProps = pickBy( {
+	const styleProps = FilterStyles( {
         '--gutena--newsletter-button-icon-spacing': btnIconSpacing + 'px',
         '--gutena--newsletter-button-icon-color': btnIconColor,
         '--gutena--newsletter-button-width': btnMaxWidth + 'px',
-        }, value => typeof value !== 'undefined' && '' !== value && 'NaN' !== value && 'none' !== value && 'px' !== value && ! includes( value, 'undefined' )
-    )
+    } );
 
 	return styleProps
 }
