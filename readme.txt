@@ -3,7 +3,7 @@ Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp, block, newsletter block
 Requires at least: 5.8
 Tested up to: 6.1
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -57,11 +57,15 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 == Changelog ==
 
-= 1.0.5 =
-Release Date:
+= 1.1.0 =
+Release Date: December 5, 2022
 
-* NEW: Completely Redesigned Block.
-* Added: Various New Styles.
+* NEW: Added "Newsletter Form" Block and the existing "Newsletter Field" block will be considered as legacy.
+* Added: Ability to add "Newsletter Form" Block to Column, Group (Row and Stack also).
+* Added: Option to control Input Field border, width and align.
+* Added: Option to customize Submit Button type, icon, color, size, postion, border, width and align.
+* Added: Option to alter alignment of the messages shown after submit.
+* Added: Media images can also be added in the place of Submit Button text.
 * Added: Screen Reader support.
 * Tested with WordPress v6.1.
 

@@ -128,6 +128,14 @@
                         margin-left: var( --gutena--newsletter-button-icon-spacing, 10px );
                     }
                 }
+
+                .gutena-newsletter-button-text {
+                    vertical-align: middle;
+
+                    img {
+                        vertical-align: middle;
+                    }
+                }
             }
         }
     }
