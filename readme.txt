@@ -66,6 +66,8 @@ Release Date: December 5, 2022
 * Added: Option to customize Submit Button type, icon, color, size, postion, border, width and align.
 * Added: Option to alter alignment of the messages shown after submit.
 * Added: Media images can also be added in the place of Submit Button text.
+* Added: `gutena_newsletter_script_data` filter which can be used to alter the JS data.
+* Added: `gutena_newsletter_mailchimp_data` filter which can be used to alter the Mailchimp payload data.
 * Added: Screen Reader support.
 * Tested with WordPress v6.1.
 
