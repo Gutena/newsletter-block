@@ -1,0 +1,88 @@
+.gutena-icon-picker {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+
+    div.icon-picker {
+        border-radius: 2px;
+        cursor: pointer;
+        display: flex;
+        flex-flow: row nowrap;
+        min-height: 50px;
+        outline: 0 none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+
+        .icon-picker__current {
+            align-items: center;
+            display: flex;
+            flex: 0 0 70px;
+            flex-flow: row nowrap;
+            justify-content: center;
+            padding: 2px;
+
+            .icon-picker__icon--empty {
+                font-size: 14px;
+                font-style: italic;
+                line-height: 16px;
+                text-align: center;
+                text-transform: lowercase;
+                color: #e0e0e0;
+            }
+
+            .icon-picker__icon {
+                align-items: center;
+                border-radius: 2px;
+                display: flex;
+                flex-flow: row nowrap;
+                height: 28px;
+                justify-content: space-between;
+                margin: 2px;
+                padding: 0;
+                width: 48px;
+                border: 1px solid #eee;
+                color: #424242;
+
+                .icon-picker__elm {
+                    align-items: center;
+                    display: flex;
+                    font-size: 18px;
+                    height: 28px;
+                    justify-content: center;
+                    width: 28px;
+                }
+
+                .icon-picker__del {
+                    align-items: center;
+                    cursor: pointer;
+                    display: flex;
+                    height: 28px;
+                    justify-content: center;
+                    transition: background-color .25s;
+                    width: 18px;
+                    background-color: #eee;
+                    height: 18px;
+                }
+            }
+        }
+
+        .icon-picker__button {
+            align-items: center;
+            display: flex;
+            height: auto;
+            justify-content: center;
+            margin-left: auto;
+            transition: background .25s,box-shadow .25s;
+            width: 48px;
+            background-color: #f5f5f5;
+            border: 0 transparent;
+            border-left: 1px solid #e0e0e0;
+            color: #424242;
+        }
+    }
+}

@@ -57,6 +57,12 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 == Changelog ==
 
+= 1.1.1 =
+Release Date:
+
+* Added: Option to Stack display on mobile.
+* Added: New Icon Control.
+
 = 1.1.0 =
 Release Date: December 5, 2022
 

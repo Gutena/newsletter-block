@@ -19,19 +19,9 @@ import {
 } from '@wordpress/block-editor';
 
 /**
- * External dependencies
+ * Internal dependencies
  */
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-
-/**
- * Styles
- */
-import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css';
-import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
-
-/**
- * Import custom
- */
+import IconControl from '../../components/IconControl/IconControl';
 import parseIcon from '../../utils/parse-icon';
 import { flattenIconsArray } from '../../utils/icon-functions';
 import getIcons from '../../icons';
@@ -43,13 +33,11 @@ export default function edit( { attributes, context, setAttributes } ) {
     const stackOnMobile = context?.gutenaNewsletterStackOnMobile;
 
     const isStackedLayout = ( displayType === 'column' || ( displayType === 'row' && stackOnMobile ) )
-
     const iconsAll = flattenIconsArray( getIcons() );
     const iconsObj = iconsAll.reduce( ( acc, value ) => {
         acc[ value?.name ] = value?.icon
         return acc
     }, {} );
-    const icons = Object.keys( iconsObj )
 
     const renderSVG = ( svg, size ) => {
         let renderedIcon = iconsObj?.[ svg ];
@@ -59,20 +47,6 @@ export default function edit( { attributes, context, setAttributes } ) {
         }
 
         return <Icon icon={ renderedIcon } size={ size } />;
-    }
-
-    const renderSVGPicker = svg => {
-        let renderedIcon = iconsObj?.[svg];
-        // Icons provided by third-parties are generally strings.
-        if ( typeof renderedIcon === 'string' ) {
-            renderedIcon = parseIcon( renderedIcon );
-        }
-
-        return (
-            <div style={ { display: 'inline-flex', justifyContent: 'center', alignItems: 'center' } } className="gutena-render-svg">
-                <Icon icon={ renderedIcon } />
-            </div>
-        )
     }
 
     const blockProps = useBlockProps( {
@@ -118,17 +92,13 @@ export default function edit( { attributes, context, setAttributes } ) {
                     />
                     {
 						btnType !== 'text' && (
-                            <BaseControl label={ __( 'Select Icon', 'newsletter-block-gutena' ) } __nextHasNoMarginBottom={ true } className="gutena-font-icon-picker">
-                                <FontIconPicker
-                                    icons={ icons }
-                                    value={ btnIcon }
-                                    onChange={ ( icon ) => setAttributes( { btnIcon: icon } ) }
-                                    renderFunc={ renderSVGPicker }
-                                    appendTo="body"
-                                    theme="default"
-                                    isMulti={ false }
-                                />
-                            </BaseControl>
+                            <IconControl 
+                                label="select icon" 
+                                activeIcon={ btnIcon } 
+                                value={ btnIcon } 
+                                onChange={ ( value ) => setAttributes( { btnIcon: value?.iconName } ) }
+                                onClear={ () => setAttributes( { btnIcon: '' } ) }
+                            />
                         )
                     }
 					{
