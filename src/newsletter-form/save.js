@@ -4,12 +4,17 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Import custom
  */
 import DynamicStyles from './styles';
 
 export default function save( { attributes } ) {
-    const { displayType, textPosition } = attributes;
+    const { displayType, stackOnMobile, textPosition } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: `gutena-newsletter-form-block message-${ textPosition }`,
@@ -17,7 +22,9 @@ export default function save( { attributes } ) {
     } );
 
     const innerBlocksProps = useInnerBlocksProps.save( {
-        className: `gutena-newsletter-form ${ displayType }`
+        className: classnames( `gutena-newsletter-form ${ displayType }`, {
+            'stacked': stackOnMobile
+        } )
     } );
 
     return (

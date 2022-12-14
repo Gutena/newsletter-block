@@ -40,6 +40,36 @@
             }
         }
 
+        &.stacked {
+            @media only screen and (max-width: 780px) {
+                flex-direction: column;
+
+                .gutena-newsletter-form-input-block {
+                    margin-bottom: 0 !important;
+                    align-self: auto;
+                }
+
+                .gutena-newsletter-submit-button-block {
+                    margin-top: 0 !important;
+
+                    &.left {
+                        align-self: flex-start;
+                        width: var( --gutena--newsletter-button-width );
+                    }
+        
+                    &.center {
+                        align-self: center;
+                        width: var( --gutena--newsletter-button-width );
+                    }
+        
+                    &.right {
+                        align-self: flex-end;
+                        width: var( --gutena--newsletter-button-width );
+                    }
+                }
+            }
+        }
+
         .gutena-newsletter-form-input-block {
             position: relative;
             display: flex;

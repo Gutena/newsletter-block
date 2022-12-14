@@ -97,7 +97,8 @@
         }
     },
     "usesContext": [
-        "gutenaNewsletterDisplayType" 
+        "gutenaNewsletterDisplayType",
+        "gutenaNewsletterStackOnMobile"
     ],
     "editorScript": "file:./index.js"
 }

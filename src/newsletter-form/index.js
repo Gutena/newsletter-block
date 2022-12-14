@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 /**
  * Child block
@@ -15,6 +16,16 @@ import './submit-button/index'
 import metadata from './block.json';
 import edit from './edit';
 import save from './save';
+
+/**
+ * External dependencies
+ */
+import { omit } from 'lodash';
+
+/**
+ * Import custom
+ */
+import DynamicStyles from './styles';
 
 /**
  * Styles
@@ -38,5 +49,28 @@ registerBlockType( metadata, {
 				</clipPath>
 			</defs>
 		</svg>
-	)
+	),
+	deprecated: [
+		{
+			attributes: omit( metadata?.attributes, [ 'stackOnMobile' ] ),
+			save: ( { attributes } ) => {
+				const { displayType, textPosition } = attributes;
+
+				const blockProps = useBlockProps.save( {
+					className: `gutena-newsletter-form-block message-${ textPosition }`,
+					style: DynamicStyles( attributes )
+				} );
+
+				const innerBlocksProps = useInnerBlocksProps.save( {
+					className: `gutena-newsletter-form ${ displayType }`
+				} );
+
+				return (
+					<div { ...blockProps }>
+						<form { ...innerBlocksProps } />
+					</div>
+				);
+			},
+		}
+	]
 } );

@@ -39,6 +39,10 @@
       "type": "number",
       "default": 10
     },
+    "stackOnMobile": {
+      "type": "boolean",
+      "default": true
+    },
     "textSuccess": {
       "type": "string",
       "default": "Thank you for subscribing!"
@@ -62,7 +66,8 @@
     }
   },
   "providesContext": {
-    "gutenaNewsletterDisplayType": "displayType"
+    "gutenaNewsletterDisplayType": "displayType",
+    "gutenaNewsletterStackOnMobile": "stackOnMobile"
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
