@@ -30,7 +30,7 @@ import { flattenIconsArray } from '../../utils/icon-functions';
 /**
  * Control styles
  */
-import './style.scss'
+import './editor.scss'
 
 const noop = () => {};
 

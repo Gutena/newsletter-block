@@ -27,11 +27,6 @@ import classnames from 'classnames';
  */
 import DynamicStyles from './styles';
 
-/**
- * Styles
- */
-import './editor.scss';
-
 const BLOCK_TEMPLATE = [
     [ 'gutena/newsletter-input-field' ],
     [ 'gutena/newsletter-submit-button' ]
