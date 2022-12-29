@@ -8,7 +8,8 @@ import {
     PanelBody, 
     TextControl, 
     RangeControl, 
-    SelectControl 
+    SelectControl,
+    ToggleControl
 } from '@wordpress/components';
 import { 
     InspectorControls, 
@@ -17,14 +18,14 @@ import {
 } from '@wordpress/block-editor';
 
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Import custom
  */
 import DynamicStyles from './styles';
-
-/**
- * Styles
- */
-import './editor.scss';
 
 const BLOCK_TEMPLATE = [
     [ 'gutena/newsletter-input-field' ],
@@ -40,7 +41,8 @@ export default function edit( { attributes, setAttributes } ) {
         textSubscribed, 
         textPosition, 
         displayType, 
-        inputButtonGap 
+        inputButtonGap,
+        stackOnMobile
     } = attributes;
     
 	const blockProps = useBlockProps( {
@@ -49,7 +51,9 @@ export default function edit( { attributes, setAttributes } ) {
     } );
 
     const innerBlocksProps = useInnerBlocksProps( {
-        className: `gutena-newsletter-form ${ displayType }`
+        className: classnames( `gutena-newsletter-form ${ displayType }`, {
+            'stacked': stackOnMobile
+        } )
     }, {
         template: BLOCK_TEMPLATE,
         allowedBlocks: [ 'gutena/newsletter-input-field', 'gutena/newsletter-submit-button' ],
@@ -76,6 +80,13 @@ export default function edit( { attributes, setAttributes } ) {
                         min={ 0 }
                         max={ 500 }
                     />
+                    { displayType === 'row' && 
+                        <ToggleControl
+                            label={ __( 'Stack on Mobile', 'newsletter-block-gutena' ) }
+                            checked={ stackOnMobile }
+                            onChange={ () => setAttributes( { stackOnMobile: ! stackOnMobile } ) }
+                        />
+                    }
                 </PanelBody>
                 <PanelBody title={ __( 'Platform', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     <SelectControl

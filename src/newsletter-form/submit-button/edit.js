@@ -19,34 +19,25 @@ import {
 } from '@wordpress/block-editor';
 
 /**
- * External dependencies
+ * Internal dependencies
  */
-import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
-
-/**
- * Styles
- */
-import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css';
-import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
-
-/**
- * Import custom
- */
+import IconControl from '../../components/IconControl/IconControl';
 import parseIcon from '../../utils/parse-icon';
 import { flattenIconsArray } from '../../utils/icon-functions';
 import getIcons from '../../icons';
 import DynamicStyles from './styles';
 
 export default function edit( { attributes, context, setAttributes } ) {
-    const { btnText, btnAlign, btnMaxWidth, btnPosition, btnType, btnIcon, btnIconPosition, btnIconSize, btnIconColor, btnIconSpacing } = attributes;
+    const { btnText, btnMaxWidth, btnPosition, btnType, btnIcon, btnIconPosition, btnIconSize, btnIconColor, btnIconSpacing } = attributes;
     const displayType = context?.gutenaNewsletterDisplayType;
+    const stackOnMobile = context?.gutenaNewsletterStackOnMobile;
 
+    const isStackedLayout = ( displayType === 'column' || ( displayType === 'row' && stackOnMobile ) )
     const iconsAll = flattenIconsArray( getIcons() );
     const iconsObj = iconsAll.reduce( ( acc, value ) => {
         acc[ value?.name ] = value?.icon
         return acc
     }, {} );
-    const icons = Object.keys( iconsObj )
 
     const renderSVG = ( svg, size ) => {
         let renderedIcon = iconsObj?.[ svg ];
@@ -56,20 +47,6 @@ export default function edit( { attributes, context, setAttributes } ) {
         }
 
         return <Icon icon={ renderedIcon } size={ size } />;
-    }
-
-    const renderSVGPicker = svg => {
-        let renderedIcon = iconsObj?.[svg];
-        // Icons provided by third-parties are generally strings.
-        if ( typeof renderedIcon === 'string' ) {
-            renderedIcon = parseIcon( renderedIcon );
-        }
-
-        return (
-            <div style={ { display: 'inline-flex', justifyContent: 'center', alignItems: 'center' } } className="gutena-render-svg">
-                <Icon icon={ renderedIcon } />
-            </div>
-        )
     }
 
     const blockProps = useBlockProps( {
@@ -82,8 +59,8 @@ export default function edit( { attributes, context, setAttributes } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     {
-                        displayType === 'column' && (
-                            <ToggleGroupControl label={ __( 'Button Position', 'newsletter-block-gutena' ) } value={ btnPosition } onChange={ ( value ) => setAttributes( { btnPosition: value } ) } isBlock>
+                        isStackedLayout && (
+                            <ToggleGroupControl label={ ( displayType === 'row' && stackOnMobile ) ? __( 'Button Position (Mobile)', 'newsletter-block-gutena' ) : __( 'Button Position', 'newsletter-block-gutena' ) } value={ btnPosition } onChange={ ( value ) => setAttributes( { btnPosition: value } ) } isBlock>
                                 <ToggleGroupControlOption value="left" label={ __( 'Left', 'newsletter-block-gutena' ) } />
                                 <ToggleGroupControlOption value="center" label={ __( 'Center', 'newsletter-block-gutena' ) } />
                                 <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
@@ -92,7 +69,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                         )
                     }
                     {
-                        displayType === 'column' && btnPosition !== 'auto' && (
+                        isStackedLayout && btnPosition !== 'auto' && (
                             <RangeControl
                                 label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
                                 value={ btnMaxWidth }
@@ -115,17 +92,13 @@ export default function edit( { attributes, context, setAttributes } ) {
                     />
                     {
 						btnType !== 'text' && (
-                            <BaseControl label={ __( 'Select Icon', 'newsletter-block-gutena' ) } __nextHasNoMarginBottom={ true } className="gutena-font-icon-picker">
-                                <FontIconPicker
-                                    icons={ icons }
-                                    value={ btnIcon }
-                                    onChange={ ( icon ) => setAttributes( { btnIcon: icon } ) }
-                                    renderFunc={ renderSVGPicker }
-                                    appendTo="body"
-                                    theme="default"
-                                    isMulti={ false }
-                                />
-                            </BaseControl>
+                            <IconControl 
+                                label="select icon" 
+                                activeIcon={ btnIcon } 
+                                value={ btnIcon } 
+                                onChange={ ( value ) => setAttributes( { btnIcon: value?.iconName } ) }
+                                onClear={ () => setAttributes( { btnIcon: '' } ) }
+                            />
                         )
                     }
 					{

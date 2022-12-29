@@ -12,7 +12,7 @@ var zipPath = [ './', './**', './build', './build/**', '!./src', '!./src/**', '!
 
 // Clean CSS, JS and ZIP
 function clean_files() {
-    let cleanPath = [ './output/newsletter-block-gutena.zip' ];
+    let cleanPath = [ './output/newsletter-block-by-gutena.zip' ];
     return del( cleanPath, { force : true } ); 
 }
 
@@ -30,7 +30,7 @@ function create_pot() {
 // Create ZIP file
 function create_zip() {
     return gulp.src( zipPath, { base : '../' } )
-        .pipe( zip( 'newsletter-block-gutena.zip' ) )
+        .pipe( zip( 'newsletter-block-by-gutena.zip' ) )
         .pipe( gulp.dest( './output/' ) )
 }
 
