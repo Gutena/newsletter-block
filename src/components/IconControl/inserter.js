@@ -121,7 +121,7 @@ export default function InserterModal( props ) {
 			categories.sort().unshift( allCategory );
 			categoriesFull.unshift( {
 				name: allCategory,
-				title: __( 'All', 'icon-block' ),
+				title: __( 'All', 'newsletter-block-gutena' ),
 			} );
 		}
 
@@ -232,14 +232,14 @@ export default function InserterModal( props ) {
 				icon={ blockDefault }
 				className="block-editor-inserter__no-results-icon"
 			/>
-			<p>{ __( 'No results found.', 'block-icon' ) }</p>
+			<p>{ __( 'No results found.', 'newsletter-block-gutena' ) }</p>
 		</div>
 	);
 
 	return (
 		<Modal
 			className="wp-block-outermost-icon-inserter__modal"
-			title={ __( 'Icon Library', 'icon-block' ) }
+			title={ __( 'Icon Library', 'newsletter-block-gutena' ) }
 			onRequestClose={ () => setInserterOpen( false ) }
 			isFullScreen
 		>
@@ -269,7 +269,7 @@ export default function InserterModal( props ) {
 										'%1$s search result for "%2$s"',
 										'%1$s search results for "%2$s"',
 										shownIcons.length,
-										'icon-block'
+										'newsletter-block-gutena'
 									),
 									shownIcons.length,
 									searchInput
@@ -278,7 +278,7 @@ export default function InserterModal( props ) {
 						<div className="icon-controls">
 							<div className="icon-controls__size">
 								<span>
-									{ __( 'Preview size', 'icon-block' ) }
+									{ __( 'Preview size', 'newsletter-block-gutena' ) }
 								</span>
 								<RangeControl
 									min={ 24 }

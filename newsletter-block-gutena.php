@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Gutena Newsletter
  * Description:     Gutena Newsletter
- * Version:         1.1.0
+ * Version:         1.1.1
  * Author:          ExpressTech
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.1.0';
+		public $version = '1.1.1';
 
 		/**
 		 * Instance of this class.
