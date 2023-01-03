@@ -5,6 +5,7 @@
     "parent": [ "gutena/newsletter", "core/column", "core/group", "core/row", "core/stack" ],
     "title": "Newsletter Form",
     "category": "gutena",
+    "keywords": [ "mailchimp", "newsletter", "block", "email subscribers", "email automation" ],
     "description": "Gutena Newsletter Form",
     "textdomain": "newsletter-block-gutena",
     "supports": {

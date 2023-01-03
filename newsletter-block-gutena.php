@@ -1,9 +1,10 @@
 <?php // @codingStandardsIgnoreLine
 /**
  * Plugin Name:     Gutena Newsletter
- * Description:     Gutena Newsletter
- * Version:         1.1.1
+ * Description:     Gutena Newsletter plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
+ * Version:         1.1.2
  * Author:          ExpressTech
+ * Author URI:      https://expresstech.io
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     newsletter-block-gutena
@@ -30,7 +31,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.1.1';
+		public $version = '1.1.2';
 
 		/**
 		 * Instance of this class.
@@ -213,7 +214,6 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 */
 		private function process_mailchimp( $email, $api_key, $list_id, $success, $subscribed ) {
 			$phone = $fname = $lname = '';
-			$double_optin = false;
 
 			$api_endpoint = 'https://<dc>.api.mailchimp.com/3.0/';
 			list( , $datacentre ) = explode( '-', $api_key );
@@ -228,7 +228,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 				],
 				'email_type'        => 'html',
 				'status'            => 'subscribed',
-				'double_optin'      => $double_optin,
+				'double_optin'      => false,
 				'update_existing'   => true,
 				'replace_interests' => false,
 				'send_welcome'      => false,

@@ -4,6 +4,13 @@
   "name": "gutena/newsletter",
   "title": "Newsletter",
   "category": "gutena",
+  "keywords": [
+    "block",
+    "mailchimp",
+    "newsletter",
+    "email subscribers",
+    "email automation"
+  ],
   "description": "Gutena Newsletter",
   "textdomain": "newsletter-block-gutena",
   "supports": {
