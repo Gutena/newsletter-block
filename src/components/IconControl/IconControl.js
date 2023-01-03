@@ -35,7 +35,7 @@ import './editor.scss'
 const noop = () => {};
 
 const IconControl = ( {
-    label = __( 'Select Icon', 'gutena-kit' ),
+    label = __( 'Select Icon', 'newsletter-block-gutena' ),
     value = '',
     onChange= noop,
     onClear = noop,
