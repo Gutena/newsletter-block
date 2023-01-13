@@ -64,6 +64,11 @@ If you like this plugin, consider exploring our other themes and plugins:
 
 == Changelog ==
 
+= 1.1.3 =
+Release Date:
+
+* Added: Option to change input placeholder.
+
 = 1.1.2 =
 Release Date: January 3, 2023
 

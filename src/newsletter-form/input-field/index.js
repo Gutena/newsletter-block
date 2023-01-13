@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
-//import './style.scss';
+import { useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -10,6 +10,16 @@ import { registerBlockType } from '@wordpress/blocks';
 import metadata from './data.json';
 import edit from './edit';
 import save from './save';
+
+/**
+ * External dependencies
+ */
+import { omit } from 'lodash';
+
+/**
+ * Import custom
+ */
+import DynamicStyles from './styles';
 
 /**
  * Register Block
@@ -28,5 +38,24 @@ registerBlockType( metadata, {
 			</clipPath>
 		</defs>
 		</svg>
-	)
+	),
+	deprecated: [
+		{
+			attributes: omit( metadata?.attributes, [ 'inputPlaceholder' ] ),
+			save: ( { attributes } ) => {
+				const { inputAlign } = attributes;
+
+				const blockProps = useBlockProps.save( {
+					className: 'gutena-newsletter-form-input-block',
+					style: DynamicStyles( attributes )
+				} );
+
+				return (
+					<div { ...blockProps }>
+						<input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" aria-label="Input Field" />
+					</div>
+				);
+			},
+		}
+	]
 } );
