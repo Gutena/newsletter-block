@@ -239,7 +239,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 					'Content-Type'  => 'application/json',
 					'Authorization' => 'Basic '. base64_encode( 'user:' . $api_key ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				],
-				'body'      => $body,
+				'body'      => wp_json_encode( $body ),
 				'sslverify' => false,
 			] );
 

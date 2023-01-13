@@ -65,9 +65,10 @@ If you like this plugin, consider exploring our other themes and plugins:
 == Changelog ==
 
 = 1.1.3 =
-Release Date:
+Release Date: January 13, 2023
 
 * Added: Option to change input placeholder.
+* Fixed: Newsletter form submission was not working.
 
 = 1.1.2 =
 Release Date: January 3, 2023
