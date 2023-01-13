@@ -6,6 +6,7 @@ import {
     __experimentalToggleGroupControl as ToggleGroupControl,
     __experimentalToggleGroupControlOption as ToggleGroupControlOption,
     PanelBody, 
+    TextControl,
     RangeControl
 } from '@wordpress/components';
 import { 
@@ -19,7 +20,7 @@ import {
 import DynamicStyles from './styles';
 
 export default function edit( { attributes, setAttributes } ) {
-    const { inputMaxWidth, inputAlign } = attributes;
+    const { inputMaxWidth, inputAlign, inputPlaceholder } = attributes;
 
 	const blockProps = useBlockProps( {
         className: 'gutena-newsletter-form-input-block',
@@ -40,6 +41,11 @@ export default function edit( { attributes, setAttributes } ) {
                         <ToggleGroupControlOption value="center" label={ __( 'Center', 'newsletter-block-gutena' ) } />
                         <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
                     </ToggleGroupControl>
+                    <TextControl
+                        label={ __( 'Input Placeholder', 'newsletter-block-gutena' ) } 
+                        value={ inputPlaceholder }
+                        onChange={ ( value ) => setAttributes( { inputPlaceholder: value } ) }
+                    />
                     <RangeControl
                         label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
                         value={ inputMaxWidth }
@@ -52,7 +58,7 @@ export default function edit( { attributes, setAttributes } ) {
             </InspectorControls>
 
             <div { ...blockProps }>
-                <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" aria-label="Input Field" />
+                <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder={ inputPlaceholder } aria-label="Input Field" />
             </div>
         </>
 	);

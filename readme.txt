@@ -3,7 +3,7 @@ Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp, block, email subscribers, email automation
 Requires at least: 5.8
 Tested up to: 6.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -63,6 +63,12 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Activate Gutena Newsletter from your Plugins page.
 
 == Changelog ==
+
+= 1.1.3 =
+Release Date: January 13, 2023
+
+* Added: Option to change input placeholder.
+* Fixed: Newsletter form submission was not working.
 
 = 1.1.2 =
 Release Date: January 3, 2023

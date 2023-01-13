@@ -66,6 +66,10 @@
         "inputAlign": {
             "type": "string",
             "default": "left"
+        },
+        "inputPlaceholder": {
+            "type": "string",
+            "default": "name@email.com"
         }
     },
     "editorScript": "file:./index.js"

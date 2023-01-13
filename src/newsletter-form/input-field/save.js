@@ -9,7 +9,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 import DynamicStyles from './styles';
 
 export default function save( { attributes } ) {
-    const { inputAlign } = attributes;
+    const { inputAlign, inputPlaceholder } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: 'gutena-newsletter-form-input-block',
@@ -18,7 +18,7 @@ export default function save( { attributes } ) {
 
     return (
         <div { ...blockProps }>
-            <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder="name@email.com" aria-label="Input Field" />
+            <input type="email" id="gutena-newsletter-field" className={ `gutena-newsletter-field ${ inputAlign }` } placeholder={ inputPlaceholder } aria-label="Input Field" />
         </div>
 	);
 }
