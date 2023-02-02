@@ -25,7 +25,7 @@ export default function edit( { attributes, setAttributes } ) {
                         onChange={ ( value ) => setAttributes( { provider: value } ) }
                     />
                     {
-                        ( attributes.provider === 'mailchimp' ) ? 
+                        ( attributes.provider === 'mailchimp' ) &&
                         <>
                             <TextControl
                                 label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
@@ -39,7 +39,6 @@ export default function edit( { attributes, setAttributes } ) {
                                 help={ helpText} 
                             />
                         </>
-                        : <></>
                     }
                 </PanelBody>
                 <PanelBody title={ __( 'Messages', 'newsletter-block-gutena' ) } initialOpen={ false }>
@@ -67,10 +66,10 @@ export default function edit( { attributes, setAttributes } ) {
             </InspectorControls>
 
 			<div { ...blockProps }>
-                <form className="gutena-newsletter-form">
+                <div className="gutena-newsletter-form">
                     <input type="email" id="gutena-newsletter-field" className="gutena-newsletter-field" placeholder="name@email.com" />
-                    <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={{ color: attributes.iconColor }} />
-                </form>
+                    <input type="submit" id="gutena-newsletter-action" className="gutena-newsletter-action" value="→" style={ { color: attributes?.iconColor } } />
+                </div>
 			</div>
 		</>
 	);

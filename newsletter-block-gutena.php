@@ -1,9 +1,10 @@
 <?php // @codingStandardsIgnoreLine
 /**
- * Plugin Name:     Newsletter Block by Gutena
- * Description:     Newsletter Block by Gutena
- * Version:         1.0.2
+ * Plugin Name:     Gutena Newsletter
+ * Description:     Gutena Newsletter plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
+ * Version:         1.1.3
  * Author:          ExpressTech
+ * Author URI:      https://expresstech.io
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:     newsletter-block-gutena
@@ -30,7 +31,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.0.2';
+		public $version = '1.1.3';
 
 		/**
 		 * Instance of this class.
@@ -72,26 +73,53 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		public function register() {
 			// Register blocks.
 			register_block_type( __DIR__ . '/build' );
-			register_block_type( __DIR__ . '/build/newsletter-field', [
+			register_block_type( __DIR__ . '/build/newsletter-form', [
 				'render_callback' => [ $this, 'render_block' ],
 			] );
 
-			// Enqueue assets.
-			wp_register_script( 'gutena-newsletter-block', plugins_url( 'frontend.min.js', __FILE__ ), [], $this->version, true );
-			wp_localize_script( 'gutena-newsletter-block', 'gutenaNewsletterBlock', [
-				'ajax_url'      => admin_url( 'admin-ajax.php' ),
-				'nonce'         => wp_create_nonce( 'gutena_newsletter' ),
+			// Register legacy block.
+			register_block_type( __DIR__ . '/build/newsletter-field', [
+				'render_callback' => [ $this, 'render_block_legacy' ],
+			] );
+
+			$args = apply_filters( 'gutena_newsletter_script_data', [
 				'in_process'    => __( 'Processing...', 'newsletter-block-gutena' ),
 				'email_invalid' => __( 'Email is not valid!', 'newsletter-block-gutena' ),
 			] );
+
+			$args = array_merge( [
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'gutena_newsletter' ),
+			], $args );
+
+			// Enqueue assets.
+			wp_localize_script( 'gutena-newsletter-form-script', 'gutenaNewsletterBlock', $args );
+
+			// Enqueue assets legacy block.
+			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlockLegacy', $args );
 		}
 
 		/**
-		 * Render Gutena Newsletter field block.
+		 * Render Gutena Newsletter Form block.
 		 */
 		public function render_block( $attributes, $content, $block ) {
+			unset( $attributes['style'] );
+			unset( $attributes['displayType'] );
+			unset( $attributes['inputButtonGap'] );
+			unset( $attributes['textPosition'] );
+
+			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' /></form>";
+			$content = str_replace( '</form>', $html, $content );
+			
+			return $content;
+		}
+
+		/**
+		 * Render Gutena Newsletter Field legacy block.
+		 */
+		public function render_block_legacy( $attributes, $content, $block ) {
 			$wrapper_attributes = get_block_wrapper_attributes( [ 'class' => 'gutena-newsletter-field-block' ] );
-			if ( strpos( $wrapper_attributes, 'style"' ) === false ) {
+			if ( strpos( $wrapper_attributes, 'style="' ) === false ) {
 				$wrapper_attributes = 'style="border-radius: 6px; color: #000000; background-color: #EBEBEB; padding-top: 12px; padding-bottom: 12px; padding-left: 20px; padding-right: 20px; margin-top: 10px; margin-bottom: 10px; margin-left: 0; margin-right: 0; font-size: 18px;" class="gutena-newsletter-field-block has-text-color has-background wp-block-gutena-newsletter-field"';
 			}
 			
@@ -141,15 +169,15 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			if ( empty( $_POST['data'] ) ) {
 				wp_send_json( [
 					'status'  => 'error',
-					'message' => __( 'Error occured!', 'newsletter-block-gutena' ),
+					'message' => __( 'Settings data missing!', 'newsletter-block-gutena' ),
 				] );
 			}
 			
 			$data = json_decode( wp_unslash( html_entity_decode( $_POST['data'] ) ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-			if ( 0 !== json_last_error() || empty( $data ) ) {
+			if ( 0 !== json_last_error() || empty( $data ) || ! is_array( $data ) ) {
 				wp_send_json( [
 					'status'  => 'error',
-					'message' => __( 'Error occured!', 'newsletter-block-gutena' ),
+					'message' => __( 'Error occured! Can\'t parse settings data.', 'newsletter-block-gutena' ),
 				] );
 			}
 
@@ -160,8 +188,8 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 				'provider'        => '',
 				'mailchimpApiKey' => '',
 				'mailchimpListID' => '',
-				'textSuccess'     => 'Thank you for subscribing!',
-				'textSubscribed'  => 'You are already subscribed with us!',
+				'textSuccess'     => __( 'Thank you for subscribing!', 'newsletter-block-gutena' ),
+				'textSubscribed'  => __( 'You are already subscribed with us!', 'newsletter-block-gutena' ),
 			] );
 
 			if ( 'mailchimp' === $data['provider'] ) {
@@ -186,31 +214,32 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 */
 		private function process_mailchimp( $email, $api_key, $list_id, $success, $subscribed ) {
 			$phone = $fname = $lname = '';
-			$double_optin = false;
 
 			$api_endpoint = 'https://<dc>.api.mailchimp.com/3.0/';
 			list( , $datacentre ) = explode( '-', $api_key );
 			$api_endpoint = str_replace( '<dc>', $datacentre, $api_endpoint );
+
+			$body = apply_filters( 'gutena_newsletter_mailchimp_data', [
+				'email_address'     => $email,
+				'merge_fields'      => [
+					'FNAME' => $fname,
+					'LNAME' => $lname,
+					'PHONE' => $phone,
+				],
+				'email_type'        => 'html',
+				'status'            => 'subscribed',
+				'double_optin'      => false,
+				'update_existing'   => true,
+				'replace_interests' => false,
+				'send_welcome'      => false,
+			] );
 
 			$response = wp_remote_post( $api_endpoint . '/lists/' . $list_id . '/members', [
 				'headers'   => [
 					'Content-Type'  => 'application/json',
 					'Authorization' => 'Basic '. base64_encode( 'user:' . $api_key ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				],
-				'body'      => wp_json_encode( [
-					'email_address'     => $email,
-					'merge_fields'      => [
-						'FNAME' => $fname,
-						'LNAME' => $lname,
-						'PHONE' => $phone,
-					],
-					'email_type'        => 'html',
-					'status'            => 'subscribed',
-					'double_optin'      => $double_optin,
-					'update_existing'   => true,
-					'replace_interests' => false,
-					'send_welcome'      => false,
-				] ),
+				'body'      => wp_json_encode( $body ),
 				'sslverify' => false,
 			] );
 

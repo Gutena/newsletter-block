@@ -2,11 +2,10 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
     "name": "gutena/newsletter-field",
-    "title": "Newsletter Field",
+    "title": "Newsletter Field (Legacy)",
     "category": "gutena",
-    "parent": [ "gutena/newsletter" ],
-    "icon": "email-alt",
-    "description": "Gutena Newsletter Field",
+    "parent": [],
+    "description": "Gutena Newsletter Field (Legacy)",
     "textdomain": "newsletter-block-gutena",
     "supports": {
         "html": false,
@@ -94,6 +93,6 @@
     },
     "editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"script": "gutena-newsletter-block",
+    "script": "file:./view.js",
 	"style": "file:./style-index.css"
 }

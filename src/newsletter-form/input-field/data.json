@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+    "name": "gutena/newsletter-input-field",
+    "title": "Input Field",
+    "category": "gutena",
+    "parent": [ "gutena/newsletter-form" ],
+    "description": "Gutena Newsletter Input Field",
+    "textdomain": "newsletter-block-gutena",
+    "supports": {
+        "html": false,
+		"color": {
+			"background": true,
+            "text": true
+		},
+        "typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": false
+		}
+    },
+    "attributes": {
+        "style": {
+            "type": "object",
+            "default": {
+                "color": {
+                    "text": "#000000",
+                    "background": "#EBEBEB"
+                },
+                "border": {
+                    "radius": "5px"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "12px",
+                        "bottom": "12px",
+                        "left": "20px",
+                        "right": "20px"
+                    }
+                },
+                "typography": {
+                    "fontSize": "15px"
+                }
+            }
+        },
+        "inputMaxWidth": {
+            "type": "number"
+        },
+        "inputAlign": {
+            "type": "string",
+            "default": "left"
+        },
+        "inputPlaceholder": {
+            "type": "string",
+            "default": "name@email.com"
+        }
+    },
+    "editorScript": "file:./index.js"
+}
