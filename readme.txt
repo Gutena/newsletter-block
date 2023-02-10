@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 Are you looking for a simple and effective way to grow your email subscriber list using Mailchimp? Then the Gutena Newsletter is exactly what you need! This plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
 
-[youtube https://www.youtube.com/watch?v=Idy5H0TziBA]
+[youtube https://www.youtube.com/watch?v=XXvwJemizjQ]
 
 == Features ==
 
