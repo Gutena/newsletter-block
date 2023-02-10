@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Gutena Newsletter
  * Description:     Gutena Newsletter plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
- * Version:         1.1.3
+ * Version:         1.1.4
  * Author:          ExpressTech
  * Author URI:      https://expresstech.io
  * License:         GPL-2.0-or-later
@@ -31,7 +31,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.1.3';
+		public $version = '1.1.4';
 
 		/**
 		 * Instance of this class.
@@ -300,4 +300,9 @@ if ( ! function_exists( 'gutena_newsletter_init' ) ) {
 
 	// Start it.
 	gutena_newsletter_init();
+}
+
+// Gutena Ecosystem init.
+if ( file_exists( __DIR__ . '/includes/gutena/gutena-ecosys-onboard/gutena-ecosys-onboard.php' ) ) {
+	require_once  __DIR__ . '/includes/gutena/gutena-ecosys-onboard/gutena-ecosys-onboard.php';
 }
