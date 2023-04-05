@@ -1,9 +1,9 @@
 === Gutena Newsletter - Subscriber Block & Connect Mailchimp ===
 Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp, block, email subscribers, email automation
-Requires at least: 5.8
-Tested up to: 6.1
-Stable tag: 1.1.4
+Requires at least: 5.9
+Tested up to: 6.2
+Stable tag: 1.1.5
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 Are you looking for a simple and effective way to grow your email subscriber list using Mailchimp? Then the Gutena Newsletter is exactly what you need! This plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
 
-[youtube https://www.youtube.com/watch?v=Idy5H0TziBA]
+[youtube https://www.youtube.com/watch?v=XXvwJemizjQ]
 
 == Features ==
 
@@ -65,6 +65,13 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Activate Gutena Newsletter from your Plugins page.
 
 == Changelog ==
+
+= 1.1.5 =
+Release Date: 5th April, 2023
+
+* Fixed: CSS issues in block editor.
+* Minimum required WordPress version is now v5.9.
+* Tested with WordPress v6.2.
 
 = 1.1.4 =
 Release Date: February 10, 2023
