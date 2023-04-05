@@ -14,15 +14,15 @@
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^24.6.0",
+		"@wordpress/scripts": "^26.1.0",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
-		"gulp-wp-pot": "^2.5.0",
 		"gulp-git": "^2.10.1",
+		"gulp-wp-pot": "^2.5.0",
 		"gulp-zip": "^5.1.0"
 	},
 	"dependencies": {
-		"@wordpress/icons": "^9.13.0",
+		"@wordpress/icons": "^9.21.0",
 		"classnames": "^2.3.2",
 		"gulp-cli": "^2.3.0",
 		"html-react-parser": "^3.0.4"

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Gutena Newsletter
  * Description:     Gutena Newsletter plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
- * Version:         1.1.4
+ * Version:         1.1.5
  * Author:          ExpressTech
  * Author URI:      https://expresstech.io
  * License:         GPL-2.0-or-later
@@ -31,7 +31,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.1.4';
+		public $version = '1.1.5';
 
 		/**
 		 * Instance of this class.
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			], $args );
 
 			// Enqueue assets.
-			wp_localize_script( 'gutena-newsletter-form-script', 'gutenaNewsletterBlock', $args );
+			wp_localize_script( 'gutena-newsletter-form-view-script', 'gutenaNewsletterBlock', $args );
 
 			// Enqueue assets legacy block.
 			wp_localize_script( 'gutena-newsletter-field-script', 'gutenaNewsletterBlockLegacy', $args );
@@ -273,7 +273,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 * Sanitize data.
 		 */
 		private function sanitize( $array ) {
-			foreach ( (array) $array as $k => $v ) {
+			foreach ( ( array ) $array as $k => $v ) {
 				if ( is_array( $v ) ) {
 					$array[ $k ] = $this->sanitize( $v );
 				} else {

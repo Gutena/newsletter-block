@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { 
+    __experimentalSpacer as Spacer,
     __experimentalToggleGroupControl as ToggleGroupControl,
     __experimentalToggleGroupControlOption as ToggleGroupControlOption,
     PanelBody, 
@@ -47,7 +48,7 @@ export default function edit( { attributes, setAttributes } ) {
                         onChange={ ( value ) => setAttributes( { inputPlaceholder: value } ) }
                     />
                     <RangeControl
-                        label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
+                        label={ __( 'Max Width (px)', 'newsletter-block-gutena' ) }
                         value={ inputMaxWidth }
                         onChange={ ( value ) => setAttributes( { inputMaxWidth: value } ) }
                         min={ 2 }

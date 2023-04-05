@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 import {
     __experimentalToggleGroupControl as ToggleGroupControl,
     __experimentalToggleGroupControlOption as ToggleGroupControlOption,
@@ -10,10 +11,13 @@ import {
     BaseControl,
     ColorPalette,
     RangeControl, 
-    SelectControl 
+    SelectControl,
+    ToolbarGroup,
+    ToolbarButton
 } from '@wordpress/components';
 import { 
     RichText,
+    BlockControls,
     InspectorControls, 
     useBlockProps 
 } from '@wordpress/block-editor';
@@ -21,6 +25,7 @@ import {
 /**
  * Internal dependencies
  */
+import InserterModal from '../../components/IconControl/inserter';
 import IconControl from '../../components/IconControl/IconControl';
 import parseIcon from '../../utils/parse-icon';
 import { flattenIconsArray } from '../../utils/icon-functions';
@@ -31,6 +36,8 @@ export default function edit( { attributes, context, setAttributes } ) {
     const { btnText, btnMaxWidth, btnPosition, btnType, btnIcon, btnIconPosition, btnIconSize, btnIconColor, btnIconSpacing } = attributes;
     const displayType = context?.gutenaNewsletterDisplayType;
     const stackOnMobile = context?.gutenaNewsletterStackOnMobile;
+
+    const [ isInserterOpen, setInserterOpen ] = useState( false );
 
     const isStackedLayout = ( displayType === 'column' || ( displayType === 'row' && stackOnMobile ) )
     const iconsAll = flattenIconsArray( getIcons() );
@@ -56,6 +63,18 @@ export default function edit( { attributes, context, setAttributes } ) {
 
 	return (
         <>
+            { btnIcon &&
+                <BlockControls>
+                    <ToolbarGroup>
+                        <ToolbarButton
+                            icon={ renderSVG( btnIcon ) }
+                            label={ __( 'Edit Icon', 'gutena-tabs' ) }
+                            onClick={ () => setInserterOpen( true ) }
+                        />
+                    </ToolbarGroup>
+                </BlockControls>
+            }
+
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings', 'newsletter-block-gutena' ) } initialOpen={ true }>
                     {
@@ -71,7 +90,7 @@ export default function edit( { attributes, context, setAttributes } ) {
                     {
                         isStackedLayout && btnPosition !== 'auto' && (
                             <RangeControl
-                                label={ __( 'Max Width (PX)', 'newsletter-block-gutena' ) }
+                                label={ __( 'Max Width (px)', 'newsletter-block-gutena' ) }
                                 value={ btnMaxWidth }
                                 onChange={ ( value ) => setAttributes( { btnMaxWidth: value } ) }
                                 min={ 5 }
@@ -124,18 +143,12 @@ export default function edit( { attributes, context, setAttributes } ) {
                     {
 						btnType === 'text-icon' && btnIcon && (
                             <>
-                                <SelectControl
-									label={ __( 'Icon Position', 'newsletter-block-gutena' ) }
-									value={ btnIconPosition }
-									options={ [
-										{ label: 'Left', value: 'left' },
-										{ label: 'Right', value: 'right' },
-									] }
-									onChange={ ( value ) => setAttributes( { btnIconPosition: value } ) }
-									__nextHasNoMarginBottom
-								/>
+                                <ToggleGroupControl label={ __( 'Icon Position', 'newsletter-block-gutena' ) } value={ btnIconPosition } onChange={ ( value ) => setAttributes( { btnIconPosition: value } ) } isBlock>
+                                    <ToggleGroupControlOption value="left" label={ __( 'Left', 'newsletter-block-gutena' ) } />
+                                    <ToggleGroupControlOption value="right" label={ __( 'Right', 'newsletter-block-gutena' ) } />
+                                </ToggleGroupControl>
                                 <RangeControl
-                                    label={ __( 'Gap between Icon and Title (PX)', 'newsletter-block-gutena' ) }
+                                    label={ __( 'Gap between Icon and Title (px)', 'newsletter-block-gutena' ) }
                                     value={ btnIconSpacing }
                                     onChange={ ( value ) => setAttributes( { btnIconSpacing: value } ) }
                                     min={ 1 }
@@ -146,6 +159,13 @@ export default function edit( { attributes, context, setAttributes } ) {
 					}
 				</PanelBody>
 			</InspectorControls>
+
+            <InserterModal
+                isInserterOpen={ isInserterOpen }
+                setInserterOpen={ setInserterOpen }
+                value={ btnIcon }
+                onChange={ ( value ) => setAttributes( { btnIcon: value?.iconName } ) } 
+            />
 
             <div { ...blockProps }>
                 <button type="submit" id="gutena-newsletter-action" className={ `gutena-newsletter-action icon-${ btnIconPosition } with-${ btnType }` } aria-label="Submit Buton">
