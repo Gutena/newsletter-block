@@ -55,21 +55,21 @@ const IconControl = ( {
 
     const controls = (
         <BaseControl label={ label } __nextHasNoMarginBottom={ true }>
-            <div class="gutena-newsletter-icon-picker">
-                <div class="icon-picker">
-                    <div class="icon-picker__current">
+            <div className="gutena-newsletter-icon-picker">
+                <div className="icon-picker">
+                    <div className="icon-picker__current">
                         {
                             ! isEmpty( printedIcon )
-                            ? <span class="icon-picker__icon">
-                                <span class="icon-picker__elm">
+                            ? <span className="icon-picker__icon">
+                                <span className="icon-picker__elm">
                                     <Icon icon={ printedIcon } />
                                 </span>
-                                <span class="icon-picker__del" role="button" onClick={ onClear }>×</span>
+                                <span className="icon-picker__del" role="button" onClick={ onClear }>×</span>
                             </span>
-                            : <span class="icon-picker__icon--empty">Select</span>
+                            : <span className="icon-picker__icon--empty">Select</span>
                         }
                     </div>
-                    <div class="icon-picker__button" onClick={ () => setInserterOpen( true ) }>
+                    <div className="icon-picker__button" onClick={ () => setInserterOpen( true ) }>
                         <Icon icon={ edit } />
                     </div>
                 </div>

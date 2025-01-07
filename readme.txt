@@ -2,8 +2,8 @@
 Contributors: expresstech, infosatech
 Tags: newsletter, mailchimp, block, email subscribers, email automation
 Requires at least: 5.9
-Tested up to: 6.2
-Stable tag: 1.1.5
+Tested up to: 6.7
+Stable tag: 1.1.6
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -65,6 +65,14 @@ If you like this plugin, consider exploring our other themes and plugins:
 1. Activate Gutena Newsletter from your Plugins page.
 
 == Changelog ==
+
+= 1.1.6 =
+Release Date: 7th January, 2025
+
+* Fixed: Core image block invalid content issue.
+* Fixed: React components warnings.
+* Removed: MailChimp API key from HTML element.
+* Added: Color settings for messages.
 
 = 1.1.5 =
 Release Date: 5th April, 2023
