@@ -184,7 +184,6 @@ export default function edit( { attributes, context, setAttributes } ) {
                                     placeholder={ __( 'Enter text...', 'newsletter-block-gutena' ) }
                                     value={ btnText }
                                     onChange={ value => setAttributes( { btnText: value } ) }
-                                    keepPlaceholderOnFocus
                                 />
                             </span>
                         )

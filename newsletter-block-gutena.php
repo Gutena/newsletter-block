@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Gutena Newsletter
  * Description:     Gutena Newsletter plugin is lightweight, easy to install and use, and allows you to easily add a Subscribe Newsletter Block inside the WordPress block editor. 
- * Version:         1.1.5
+ * Version:         1.1.6
  * Author:          ExpressTech
  * Author URI:      https://expresstech.io
  * License:         GPL-2.0-or-later
@@ -31,7 +31,7 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.1.5';
+		public $version = '1.1.6';
 
 		/**
 		 * Instance of this class.
@@ -100,6 +100,30 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 		}
 
 		/**
+		 * Get or set mailchimp api key.
+		 * 
+		 * @since 1.1.6
+		 * @param array $attrs Block attributes.
+		 * 
+		 * @return string Mailchimp api key.
+		 */
+		public function get_set_mailchimp_key( $attrs ) {
+			$mailchimpApiKey = '';
+			if ( empty( $attrs['mailchimpListID'] ) ) {
+				return $mailchimpApiKey;
+			}
+			
+			$mailchimp_option_key = 'gutena_newsletter_mchimp_' . sanitize_key($attrs['mailchimpListID'] );
+			$mailchimpApiKey = get_option( $mailchimp_option_key );
+
+			if ( ! empty( $attrs['mailchimpApiKey'] ) && ( empty( $mailchimpApiKey ) || $mailchimpApiKey !== sanitize_text_field( $attrs['mailchimpApiKey'] ) ) ) {
+				update_option( $mailchimp_option_key, sanitize_text_field( $attrs['mailchimpApiKey'] ) );
+			}
+
+			return $mailchimpApiKey;
+		}
+
+		/**
 		 * Render Gutena Newsletter Form block.
 		 */
 		public function render_block( $attributes, $content, $block ) {
@@ -107,6 +131,10 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			unset( $attributes['displayType'] );
 			unset( $attributes['inputButtonGap'] );
 			unset( $attributes['textPosition'] );
+
+			// Set mailchimp api key.
+			$this->get_set_mailchimp_key( $attributes );
+			unset( $attributes['mailchimpApiKey'] );
 
 			$html = "<input type='hidden' id='gutena-newsletter-settings' class='gutena-newsletter-settings' value='" . wp_json_encode( $attributes, JSON_HEX_APOS | JSON_HEX_QUOT ) . "' /></form>";
 			$content = str_replace( '</form>', $html, $content );
@@ -127,6 +155,9 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 
 			unset( $attributes['style'] );
 			unset( $attributes['iconColor'] );
+			// Set mailchimp api key.
+			$this->get_set_mailchimp_key( $attributes );
+			unset( $attributes['mailchimpApiKey'] );
 
 			$output = '<form class="gutena-newsletter-form">';
 			$output .= '<input type="email" id="gutena-newsletter-field" class="gutena-newsletter-field" placeholder="name@email.com" />';
@@ -193,6 +224,11 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			] );
 
 			if ( 'mailchimp' === $data['provider'] ) {
+				if ( ! empty( $data['mailchimpListID'] ) ) {
+					$data['mailchimpApiKey'] = $this->get_set_mailchimp_key( array(
+						'mailchimpListID' => $data['mailchimpListID'],
+					) );
+				}
 				if ( ! empty( $data['mailchimpApiKey'] ) && ! empty( $data['mailchimpListID'] ) ) {
 					$this->process_mailchimp( $data['email'], $data['mailchimpApiKey'], $data['mailchimpListID'], $data['textSuccess'], $data['textSubscribed'] );
 				} else {
