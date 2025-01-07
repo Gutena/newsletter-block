@@ -70,6 +70,12 @@
     "textPosition": {
       "type": "string",
       "default": "left"
+    },
+    "successMessageColor": {
+      "type": "string"
+    },
+    "errorMessageColor": {
+      "type": "string"
     }
   },
   "providesContext": {

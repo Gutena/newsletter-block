@@ -150,6 +150,7 @@ export default function InserterModal( props ) {
 	function renderIconTypeCategories( type ) {
 		return (
 			<MenuGroup
+				key={ `category-type-${ type.type }` }
 				className="icon-inserter__sidebar__category-type"
 				label={ type.title }
 			>
@@ -293,10 +294,7 @@ export default function InserterModal( props ) {
 						</div>
 					</div>
 					<div className="icon-inserter__content-grid">
-						{ [
-							isEmpty( shownIcons ) && noResults,
-							! isEmpty( shownIcons ) && searchResults,
-						] }
+						{ isEmpty( shownIcons ) ? noResults : searchResults }
 					</div>
 				</div>
 			</div>

@@ -14,7 +14,8 @@ import {
 import { 
     InspectorControls, 
     useBlockProps, 
-    useInnerBlocksProps 
+    useInnerBlocksProps,
+    PanelColorSettings
 } from '@wordpress/block-editor';
 
 /**
@@ -42,7 +43,9 @@ export default function edit( { attributes, setAttributes } ) {
         textPosition, 
         displayType, 
         inputButtonGap,
-        stackOnMobile
+        stackOnMobile,
+        successMessageColor,
+        errorMessageColor
     } = attributes;
     
 	const blockProps = useBlockProps( {
@@ -103,12 +106,12 @@ export default function edit( { attributes, setAttributes } ) {
                         <>
                             <TextControl
                                 label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
-                                value={ mailchimpApiKey }
+                                value={ mailchimpApiKey || '' }
                                 onChange={ ( value ) => setAttributes( { mailchimpApiKey: value } ) }
                             />
                             <TextControl
                                 label={ __( 'Mailchimp Audience ID', 'newsletter-block-gutena' ) }
-                                value={ mailchimpListID }
+                                value={ mailchimpListID || '' }
                                 onChange={ ( value ) => setAttributes( { mailchimpListID: value } ) }
                                 help={ helpText} 
                             />
@@ -132,6 +135,26 @@ export default function edit( { attributes, setAttributes } ) {
                         onChange={ ( value ) => setAttributes( { textSubscribed: value } ) }
                     />
                 </PanelBody>
+                <PanelColorSettings
+					title={ __( 'Messages colors', 'newsletter-block-gutena' ) }
+					colorSettings={ [
+						{
+							value: successMessageColor,
+							onChange: ( successMessageColor ) =>
+								setAttributes( { successMessageColor } ),
+							label: __( 'Success Message Color', 'newsletter-block-gutena' ),
+							disableCustomColors: false,
+						},
+						{
+							value: errorMessageColor,
+							onChange: ( errorMessageColor ) =>
+								setAttributes( { errorMessageColor } ),
+							label: __( 'Error Message Color', 'newsletter-block-gutena' ),
+							disableCustomColors: false,
+						}
+					] }
+					enableAlpha={ true }
+				/>
             </InspectorControls>
 
 			<div { ...blockProps }>

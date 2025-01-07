@@ -29,12 +29,12 @@ export default function edit( { attributes, setAttributes } ) {
                         <>
                             <TextControl
                                 label={ __( 'Mailchimp API Key', 'newsletter-block-gutena' ) }
-                                value={ attributes.mailchimpApiKey }
+                                value={ attributes?.mailchimpApiKey || '' }
                                 onChange={ ( value ) => setAttributes( { mailchimpApiKey: value } ) }
                             />
                             <TextControl
                                 label={ __( 'Mailchimp Audience ID', 'newsletter-block-gutena' ) }
-                                value={ attributes.mailchimpListID }
+                                value={ attributes?.mailchimpListID || '' }
                                 onChange={ ( value ) => setAttributes( { mailchimpListID: value } ) }
                                 help={ helpText} 
                             />
