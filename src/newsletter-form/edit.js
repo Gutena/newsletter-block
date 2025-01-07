@@ -136,7 +136,7 @@ export default function edit( { attributes, setAttributes } ) {
                     />
                 </PanelBody>
                 <PanelColorSettings
-					title={ __( 'Messages colors', 'newsletter-block-gutena' ) }
+					title={ __( 'Message colors', 'newsletter-block-gutena' ) }
 					colorSettings={ [
 						{
 							value: successMessageColor,
