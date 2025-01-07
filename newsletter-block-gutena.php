@@ -117,7 +117,8 @@ if ( ! class_exists( 'Gutena_Newsletter' ) ) {
 			$mailchimpApiKey = get_option( $mailchimp_option_key );
 
 			if ( ! empty( $attrs['mailchimpApiKey'] ) && ( empty( $mailchimpApiKey ) || $mailchimpApiKey !== sanitize_text_field( $attrs['mailchimpApiKey'] ) ) ) {
-				update_option( $mailchimp_option_key, sanitize_text_field( $attrs['mailchimpApiKey'] ) );
+				$mailchimpApiKey = sanitize_text_field( $attrs['mailchimpApiKey'] );
+				update_option( $mailchimp_option_key, $mailchimpApiKey );
 			}
 
 			return $mailchimpApiKey;
